@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEditor.UI;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
+using NUnit.Framework;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,37 +27,62 @@ public class PlayerMovement : MonoBehaviour
     [Header("Aplicações")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask RespawnLayer;
     [SerializeField] private Button dashButton;
 
+    [Header("Coyote & Buffer")]
+    private float coyoteTime = 0.2f;
+    private float coyoteTimecount;
+    private float jumpbuffer = 0.2f;
+    private float jumpbuffercount;
 
+    private string currentSceneName;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     void Update()
-    {
-        if(isDashing)
-            return;
-
+    {   
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if(IsGrounded())
+            coyoteTimecount = coyoteTime;
+        else
+            coyoteTimecount -= Time.deltaTime;
+
+        if(isDashing)
+            return;
+        if(Input.GetButtonDown("Jump"))
+            jumpbuffercount = jumpbuffer;
+        else
+            jumpbuffercount -= Time.deltaTime;
+
+        if(jumpbuffercount > 0f && coyoteTimecount > 0f)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpingPower);
+
+            jumpbuffercount = 0f;
         }
 
         if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f);
+
+            coyoteTimecount = 0f;
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
         }
-
+        
         Flip();
+
+        if(Respawncheck())
+            SceneManager.LoadScene(currentSceneName);
+        
     }
 
     void FixedUpdate()
@@ -97,5 +124,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCD);
         canDash = true;
         dashButton.interactable = true;
+    }
+
+    private bool Respawncheck()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, RespawnLayer);
     }
 }
