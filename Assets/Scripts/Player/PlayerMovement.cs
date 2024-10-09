@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Button dashButton;
 
     [Header("Coyote & Buffer")]
-    private float coyoteTime = 0.2f;
+    [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteTimecount;
-    private float jumpbuffer = 0.2f;
+    [SerializeField] private float jumpbuffer = 0.2f;
     private float jumpbuffercount;
 
     private string currentSceneName;
