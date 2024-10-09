@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyInterpolate : MonoBehaviour
-{
+{   
+    [Header("Pontos & Velocidade")]
     [SerializeField] private Transform a;
     [SerializeField] private Transform b;
 
