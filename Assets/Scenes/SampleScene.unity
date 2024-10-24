@@ -3039,7 +3039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePointer: {fileID: 558569011}
-  damageRange: 0.3
+  damageRange: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -3352,7 +3352,7 @@ GameObject:
   - component: {fileID: 1690789898}
   - component: {fileID: 1690789897}
   - component: {fileID: 1690789896}
-  - component: {fileID: 1690789895}
+  - component: {fileID: 1690789900}
   - component: {fileID: 1690789894}
   m_Layer: 0
   m_Name: Player Ataque pelo mouse
@@ -3380,30 +3380,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxRangeDistance: 2
---- !u!114 &1690789895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690789893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cc9dc220d193540a69ebffabff91cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  jumpingPower: 20
-  groundCheck: {fileID: 1012400579}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  RespawnLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dashButton: {fileID: 706894470}
-  coyoteTime: 0.2
-  jumpbuffer: 0.2
 --- !u!61 &1690789896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3549,6 +3525,32 @@ Transform:
   - {fileID: 197087582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690789900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690789893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c26f3b9d18f49045b3cc34327b7bf6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  jumpingPower: 16
+  groundCheck: {fileID: 1012400579}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  RespawnLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  dashButton: {fileID: 706894470}
+  coyoteTime: 0.2
+  jumpbuffer: 0.2
+  dashTo: {fileID: 197087581}
+  maxDashDistance: 5
 --- !u!1 &1823293411
 GameObject:
   m_ObjectHideFlags: 0
