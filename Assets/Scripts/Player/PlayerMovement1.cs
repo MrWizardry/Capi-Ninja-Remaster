@@ -124,7 +124,7 @@ public class PlayerMovement1 : MonoBehaviour
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
+        rb.gravityScale = 5f;
         dashButton.interactable = true;
 
         // Aplica a velocidade de dash na direção do mouse
