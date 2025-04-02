@@ -69,7 +69,7 @@ public class PlayerMovement1 : MonoBehaviour
             jumpbuffercount = 0f;
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimecount = 0f;

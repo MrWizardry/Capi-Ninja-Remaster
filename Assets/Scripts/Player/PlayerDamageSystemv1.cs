@@ -30,7 +30,7 @@ public class PlayerDamageSystemv1 : MonoBehaviour
 
         damagePointer.position = moveableRange.transform.position;
 
-        attacking = Input.GetButtonDown("Fire2");
+        attacking = Input.GetButtonDown("Fire1");
         if (attacking)
         {
             Attack();
