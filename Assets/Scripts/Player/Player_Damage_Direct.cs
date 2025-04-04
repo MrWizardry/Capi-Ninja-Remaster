@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamageSystemV2 : MonoBehaviour
+public class Player_Damage_Direct : MonoBehaviour
 {
     private bool attacking;
     public Transform damagePointer;
@@ -16,12 +16,12 @@ public class PlayerDamageSystemV2 : MonoBehaviour
     }
     void Update()
     {
-        attacking = Input.GetButtonDown("Fire2");
+        attacking = Input.GetButtonDown("Fire1");
         
         if(attacking == true)
         {
             Attack();
-            Debug.Log("Ataque");
+            Debug.Log("Ataque direto");
         }
 
     }

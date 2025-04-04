@@ -1,0 +1,113 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class WallSlide : MonoBehaviour
+{
+     [Header("Wall Slide")]
+    public Transform wallCheck;
+    public LayerMask wallLayer;
+    public float wallCheckDistance = 0.5f;
+    public float wallSlideSpeed = 2f;
+    public float wallStickTime = 1f;
+
+    [Header("Wall Jump")]
+    public float wallJumpForceX = 10f;
+    public float wallJumpForceY = 15f;
+
+    private Rigidbody2D rb;
+    private bool isTouchingWall;
+    private bool isWallSliding;
+    private bool canWallJump;
+    private float wallStickCounter;
+    private int wallDirection; // -1 (esquerda) ou 1 (direita)
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        // Cria ponto de checagem da parede, se não tiver
+        if (wallCheck == null)
+        {
+            GameObject check = new GameObject("WallCheck");
+            check.transform.SetParent(transform);
+            check.transform.localPosition = new Vector2(0.8f, 0f); // Ligeiramente à direita
+            wallCheck = check.transform;
+        }
+    }
+
+    void Update()
+    {
+        CheckWall();
+
+        if (isWallSliding)
+        {
+            wallStickCounter -= Time.deltaTime;
+
+            if (wallStickCounter > 0)
+            {
+                // Grudado na parede
+                rb.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                // Escorrega
+                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+            }
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                float inputX = Input.GetAxisRaw("Horizontal");
+
+                // Decide direção do pulo:
+                // Se estiver apertando pro lado oposto da parede, usa esse lado
+                // Senão, pula só pra cima com leve empurrão pro lado oposto da parede
+                int jumpDirection = (inputX != 0 && Mathf.Sign(inputX) != wallDirection) ? (int)Mathf.Sign(inputX) : -wallDirection;
+
+                rb.velocity = new Vector2(wallJumpForceX * jumpDirection, wallJumpForceY);
+                isWallSliding = false;
+            }
+        }
+    }
+
+    void CheckWall()
+    {
+        // Detecta parede à esquerda ou direita
+        RaycastHit2D hitRight = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, wallLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(wallCheck.position, Vector2.left, wallCheckDistance, wallLayer);
+
+        isTouchingWall = hitRight.collider != null || hitLeft.collider != null;
+
+        if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
+        {
+            if(!isWallSliding)
+            {
+                isWallSliding = true;
+                wallStickCounter = wallStickTime;
+            }
+
+            wallDirection = hitRight.collider != null ? 1: -1;
+        }
+        else if (IsGrounded() || !isTouchingWall)
+        {
+            isWallSliding = false;
+        }
+    }
+
+    bool IsGrounded()
+    {
+        // Usa o mesmo método do seu script principal, você pode ajustar esse check depois
+        return Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (wallCheck != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * wallCheckDistance);
+            Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * wallCheckDistance);
+        }
+    }
+}

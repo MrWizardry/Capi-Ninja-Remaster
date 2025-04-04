@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamageSystemv1 : MonoBehaviour
+public class Player_Damage_Ranged : MonoBehaviour
 {
     public GameObject moveableRange;
     public Transform damagePointer;
