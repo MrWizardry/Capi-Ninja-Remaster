@@ -23,6 +23,10 @@ public class WallSlide : MonoBehaviour
     private float wallStickCounter;
     private int wallDirection; // -1 (esquerda) ou 1 (direita)
 
+    private float wallJumpGraceTime = 0.2f;
+    private float wallJumpGraceCounter = 0f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +36,7 @@ public class WallSlide : MonoBehaviour
         {
             GameObject check = new GameObject("WallCheck");
             check.transform.SetParent(transform);
-            check.transform.localPosition = new Vector2(0.8f, 0f); // Ligeiramente à direita
+            check.transform.localPosition = new Vector2(0.2f, 0f); // Ligeiramente à direita
             wallCheck = check.transform;
         }
     }
@@ -55,19 +59,27 @@ public class WallSlide : MonoBehaviour
                 // Escorrega
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
+        }
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                float inputX = Input.GetAxisRaw("Horizontal");
+        // ✅ Sempre contamos o tempo de "graça"
+        wallJumpGraceCounter -= Time.deltaTime;
 
-                // Decide direção do pulo:
-                // Se estiver apertando pro lado oposto da parede, usa esse lado
-                // Senão, pula só pra cima com leve empurrão pro lado oposto da parede
-                int jumpDirection = (inputX != 0 && Mathf.Sign(inputX) != wallDirection) ? (int)Mathf.Sign(inputX) : -wallDirection;
+        // ✅ Pulo de parede com coyote time
+        if ((isWallSliding || wallJumpGraceCounter > 0f) && Input.GetButtonDown("Jump"))
+        {
+            float inputX = Input.GetAxisRaw("Horizontal");
 
-                rb.velocity = new Vector2(wallJumpForceX * jumpDirection, wallJumpForceY);
-                isWallSliding = false;
-            }
+            // Decide direção do pulo:
+            int jumpDirection = (inputX != 0 && Mathf.Sign(inputX) != wallDirection) ? (int)Mathf.Sign(inputX) : -wallDirection;
+
+            // Ajusta força horizontal se for pulo de subidinha estilo Mega Man
+            float appliedForceX = (inputX == 0) ? wallJumpForceX * 1.2f : wallJumpForceX;
+
+            // Aplica pulo
+            rb.velocity = new Vector2(appliedForceX * jumpDirection, wallJumpForceY);
+
+            isWallSliding = false;
+            wallJumpGraceCounter = 0f; // Resetamos o tempo de pulo de parede
         }
     }
 
@@ -81,15 +93,18 @@ public class WallSlide : MonoBehaviour
 
         if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
         {
-            if(!isWallSliding)
+            if (!isWallSliding)
             {
                 isWallSliding = true;
                 wallStickCounter = wallStickTime;
             }
 
-            wallDirection = hitRight.collider != null ? 1: -1;
+            wallDirection = hitRight.collider != null ? 1 : -1;
+
+            // ← Aqui salvamos o momento em que estava na parede
+            wallJumpGraceCounter = wallJumpGraceTime;
         }
-        else if (IsGrounded() || !isTouchingWall)
+        else
         {
             isWallSliding = false;
         }
