@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class WallSlide : MonoBehaviour
 {
-     [Header("Wall Slide")]
+    [Header("Wall Slide")]
     public Transform wallCheck;
     public LayerMask wallLayer;
     public float wallCheckDistance = 0.5f;
@@ -25,11 +25,13 @@ public class WallSlide : MonoBehaviour
 
     private float wallJumpGraceTime = 0.2f;
     private float wallJumpGraceCounter = 0f;
+    private Animator anim;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         // Cria ponto de checagem da parede, se não tiver
         if (wallCheck == null)
@@ -61,10 +63,10 @@ public class WallSlide : MonoBehaviour
             }
         }
 
-        // ✅ Sempre contamos o tempo de "graça"
+        // Tempo do walljumpbuffer que nem o do chão
         wallJumpGraceCounter -= Time.deltaTime;
 
-        // ✅ Pulo de parede com coyote time
+        // Coyote time no pulo da parede
         if ((isWallSliding || wallJumpGraceCounter > 0f) && Input.GetButtonDown("Jump"))
         {
             float inputX = Input.GetAxisRaw("Horizontal");
@@ -101,7 +103,7 @@ public class WallSlide : MonoBehaviour
 
             wallDirection = hitRight.collider != null ? 1 : -1;
 
-            // ← Aqui salvamos o momento em que estava na parede
+            //Aqui salvamos o momento em que estava na parede
             wallJumpGraceCounter = wallJumpGraceTime;
         }
         else
