@@ -17,8 +17,8 @@ public class WallSlide : MonoBehaviour
     public float wallJumpForceY = 15f;
 
     private Rigidbody2D rb;
-    private bool isTouchingWall;
-    private bool isWallSliding;
+    public bool isTouchingWall;
+    public bool isWallSliding;
     private bool canWallJump;
     private float wallStickCounter;
     private int wallDirection; // -1 (esquerda) ou 1 (direita)
@@ -47,70 +47,70 @@ public class WallSlide : MonoBehaviour
     {
         CheckWall();
 
+        // Wall Slide Physics
         if (isWallSliding)
         {
             wallStickCounter -= Time.deltaTime;
 
             if (wallStickCounter > 0)
             {
-                // Grudado na parede
                 rb.velocity = new Vector2(0, 0);
             }
             else
             {
-                // Escorrega
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
         }
 
-        // Tempo do walljumpbuffer que nem o do chão
+        // Wall jump buffer
         wallJumpGraceCounter -= Time.deltaTime;
 
-        // Coyote time no pulo da parede
+        // Wall jump input
         if ((isWallSliding || wallJumpGraceCounter > 0f) && Input.GetButtonDown("Jump"))
         {
             float inputX = Input.GetAxisRaw("Horizontal");
 
-            // Decide direção do pulo:
             int jumpDirection = (inputX != 0 && Mathf.Sign(inputX) != wallDirection) ? (int)Mathf.Sign(inputX) : -wallDirection;
-
-            // Ajusta força horizontal se for pulo de subidinha estilo Mega Man
             float appliedForceX = (inputX == 0) ? wallJumpForceX * 1.2f : wallJumpForceX;
 
-            // Aplica pulo
             rb.velocity = new Vector2(appliedForceX * jumpDirection, wallJumpForceY);
 
             isWallSliding = false;
-            wallJumpGraceCounter = 0f; // Resetamos o tempo de pulo de parede
+            isTouchingWall = false;
+            wallStickCounter = 0f;
+            wallJumpGraceCounter = 0f;
+
+            // FORÇA a animação parar após pulo
+            anim.SetBool("IsWS", false);
         }
+
+        UpdateWallSlideAnimation(); // Deixa isso separado
     }
 
     void CheckWall()
+{
+    RaycastHit2D hitRight = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, wallLayer);
+    RaycastHit2D hitLeft = Physics2D.Raycast(wallCheck.position, Vector2.left, wallCheckDistance, wallLayer);
+
+    isTouchingWall = hitRight.collider != null || hitLeft.collider != null;
+
+    if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
     {
-        // Detecta parede à esquerda ou direita
-        RaycastHit2D hitRight = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance, wallLayer);
-        RaycastHit2D hitLeft = Physics2D.Raycast(wallCheck.position, Vector2.left, wallCheckDistance, wallLayer);
-
-        isTouchingWall = hitRight.collider != null || hitLeft.collider != null;
-
-        if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
+        if (!isWallSliding)
         {
-            if (!isWallSliding)
-            {
-                isWallSliding = true;
-                wallStickCounter = wallStickTime;
-            }
-
-            wallDirection = hitRight.collider != null ? 1 : -1;
-
-            //Aqui salvamos o momento em que estava na parede
-            wallJumpGraceCounter = wallJumpGraceTime;
+            isWallSliding = true;
+            wallStickCounter = wallStickTime;
         }
-        else
-        {
-            isWallSliding = false;
-        }
+
+        wallDirection = hitRight.collider != null ? 1 : -1;
+        wallJumpGraceCounter = wallJumpGraceTime;
     }
+    else if(IsGrounded() || !isTouchingWall)
+    {
+        isWallSliding = false;
+    }
+}
+       
 
     bool IsGrounded()
     {
@@ -127,4 +127,23 @@ public class WallSlide : MonoBehaviour
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * wallCheckDistance);
         }
     }
+
+    void UpdateWallSlideAnimation()
+    {
+        bool isGrounded = IsGrounded();
+
+        // Se tocar o chão, força sair da animação
+        if (isGrounded)
+        {
+            anim.SetBool("IsWS", false);
+        }
+        // WS continua enquanto estiver deslizando, ou seja: tocando parede, no ar e descendo
+        bool isWallSticking = isWallSliding && !isGrounded;
+
+        anim.SetBool("IsWS", isWallSticking);
+        anim.SetInteger("WallCon", wallDirection);
+        anim.SetFloat("VerticalSpeed", rb.velocity.y);
+
+    }
+
 }
