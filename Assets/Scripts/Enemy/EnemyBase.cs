@@ -25,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     [Range(0, 360)] public float fieldOfViewAngle = 90f; // Ângulo do cone de visão
     public int visionSegments = 30; // Quanto mais segmentos, mais suave o cone
 
+    private bool canMove = true;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +35,8 @@ public class EnemyBase : MonoBehaviour
     private void Update()
     {
         DetectPlayer();
+
+       if(!canMove) return; // Se não pode mover, sai do Update
 
         if (isPlayerDetected)
         {
@@ -126,30 +130,40 @@ public class EnemyBase : MonoBehaviour
     }
 
     private void DrawVisionCone()
-{
-    Vector3 origin = transform.position;
-    Vector3 forward = (player.position - transform.position).normalized;
-
-    float halfFOV = fieldOfViewAngle / 2f;
-    float startAngle = Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg - halfFOV;
-
-    Vector3 prevPoint = origin;
-    for (int i = 0; i <= visionSegments; i++)
     {
-        float angle = startAngle + (fieldOfViewAngle * i / visionSegments);
-        float rad = angle * Mathf.Deg2Rad;
-        Vector3 direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
-        Vector3 point = origin + direction * detectionRange;
+        Vector3 origin = transform.position;
+        Vector3 forward = (player.position - transform.position).normalized;
 
-        if (i > 0)
+        float halfFOV = fieldOfViewAngle / 2f;
+        float startAngle = Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg - halfFOV;
+
+        Vector3 prevPoint = origin;
+        for (int i = 0; i <= visionSegments; i++)
         {
-            Gizmos.DrawLine(prevPoint, point);
+            float angle = startAngle + (fieldOfViewAngle * i / visionSegments);
+            float rad = angle * Mathf.Deg2Rad;
+            Vector3 direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
+            Vector3 point = origin + direction * detectionRange;
+
+            if (i > 0)
+            {
+                Gizmos.DrawLine(prevPoint, point);
+            }
+
+            prevPoint = point;
         }
 
-        prevPoint = point;
+        // Conectar de volta ao centro para formar o "cone"
+        Gizmos.DrawLine(origin, prevPoint);
     }
 
-    // Conectar de volta ao centro para formar o "cone"
-    Gizmos.DrawLine(origin, prevPoint);
-}
+    public void StopMovement()
+    {
+        canMove = false;
+        rb.velocity = Vector2.zero; // Para o movimento imediatamente
+    }
+    public void ResumeMovement()
+    {
+        canMove = true;
+    }
 }
