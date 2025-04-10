@@ -33,7 +33,7 @@ public class Player_Damage_Direct : MonoBehaviour
 
         foreach(Collider2D enemies in hitEnemies)
         {
-            enemies.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
+            //enemies.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
         }
     }
 

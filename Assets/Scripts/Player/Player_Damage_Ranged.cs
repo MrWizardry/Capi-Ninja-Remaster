@@ -44,7 +44,7 @@ public class Player_Damage_Ranged : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
+            //enemy.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
         }
     }
 
