@@ -8,7 +8,8 @@ public class Player_Damage_Direct : MonoBehaviour
     public Transform damagePointer;
 
     public float damageRange = 0.5f;
-    public LayerMask enemyLayer;
+    public LayerMask enemy;
+    public int damage = 20;
 
     void Start()
     {
@@ -29,11 +30,11 @@ public class Player_Damage_Direct : MonoBehaviour
 
     void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemy);
 
-        foreach(Collider2D enemies in hitEnemies)
+        foreach(Collider2D enemy in hitEnemies)
         {
-            //enemies.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
+            enemy.GetComponent<EnemyLife>().TakeDamage(damage);
         }
     }
 

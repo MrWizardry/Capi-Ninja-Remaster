@@ -473,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 558569010}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.33, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2109,7 +2109,8 @@ GameObject:
   - component: {fileID: 1152244829}
   - component: {fileID: 1152244834}
   - component: {fileID: 1152244833}
-  m_Layer: 0
+  - component: {fileID: 1152244835}
+  m_Layer: 7
   m_Name: w
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2302,6 +2303,20 @@ MonoBehaviour:
   player: {fileID: 1690789899}
   attackRange: 1
   attackCD: 1
+  damage: 10
+--- !u!114 &1152244835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152244828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d200d27b0fe28c94d90fa9309bf2b93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1300682419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,6 +2631,7 @@ GameObject:
   - component: {fileID: 1690789906}
   - component: {fileID: 1690789904}
   - component: {fileID: 1690789907}
+  - component: {fileID: 1690789908}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2638,10 +2654,11 @@ MonoBehaviour:
   moveableRange: {fileID: 197087581}
   damagePointer: {fileID: 295334649}
   damageRange: 0.19
-  enemyLayer:
+  enemy:
     serializedVersion: 2
     m_Bits: 0
   maxRangeDistance: 2
+  damage: 20
 --- !u!50 &1690789897
 Rigidbody2D:
   serializedVersion: 4
@@ -2781,9 +2798,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePointer: {fileID: 558569011}
   damageRange: 0.5
-  enemyLayer:
+  enemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  damage: 20
 --- !u!114 &1690789902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,6 +2928,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defenceBarrier: {fileID: 107028732}
+--- !u!114 &1690789908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690789893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2c645c36ae87f4e99ccc6226c71424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerdamage: 10
+  maxHealth: 100
 --- !u!1 &1899153840
 GameObject:
   m_ObjectHideFlags: 0

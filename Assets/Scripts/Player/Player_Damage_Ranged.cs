@@ -7,9 +7,10 @@ public class Player_Damage_Ranged : MonoBehaviour
     public GameObject moveableRange;
     public Transform damagePointer;
     public float damageRange = 0.5f;
-    public LayerMask enemyLayer;
+    public LayerMask enemy;
     public float maxRangeDistance = 5f;  
     private bool attacking;
+    public int damage = 20; // Dano fixo de 20, você pode modificar isso para ser variável
 
     private Vector2 screenPosition;
     private Vector2 worldPosition;
@@ -40,11 +41,11 @@ public class Player_Damage_Ranged : MonoBehaviour
 
     void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemy);
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            //enemy.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
+            enemy.GetComponent<EnemyLife>().TakeDamage(damage);
         }
     }
 
