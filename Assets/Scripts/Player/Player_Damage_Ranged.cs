@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDamageSystemv1 : MonoBehaviour
+public class Player_Damage_Ranged : MonoBehaviour
 {
     public GameObject moveableRange;
     public Transform damagePointer;
     public float damageRange = 0.5f;
-    public LayerMask enemyLayer;
+    public LayerMask enemy;
     public float maxRangeDistance = 5f;  
     private bool attacking;
+    public int damage = 20; // Dano fixo de 20, você pode modificar isso para ser variável
 
     private Vector2 screenPosition;
     private Vector2 worldPosition;
 
-
-    [Header("Animation Ref")]
-    AnimationManager animationManager;
     void Update()
     {
         screenPosition = Input.mousePosition;
@@ -33,7 +31,7 @@ public class PlayerDamageSystemv1 : MonoBehaviour
 
         damagePointer.position = moveableRange.transform.position;
 
-        attacking = Input.GetButtonDown("Fire2");
+        attacking = Input.GetButtonDown("Fire1");
         if (attacking)
         {
             Attack();
@@ -43,12 +41,11 @@ public class PlayerDamageSystemv1 : MonoBehaviour
 
     void Attack()
     {
-        animationManager.PlayActionAnimation("Attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemy);
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
+            enemy.GetComponent<EnemyLife>().TakeDamage(damage);
         }
     }
 

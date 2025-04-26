@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - Respawn
-  - enemyLayer
+  - enemy
   - playerLayer
-  - 
-  - 
+  - Wall
+  - Platform
   - 
   - 
   - 
