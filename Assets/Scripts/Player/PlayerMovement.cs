@@ -36,11 +36,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpbuffer = 0.2f;
     private float jumpbuffercount;
 
+    [Header("Animação")]
+    private AnimationManager animationManager;
+
     private string currentSceneName;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSceneName = SceneManager.GetActiveScene().name;
+
+        animationManager = GetComponent<AnimationManager>();
     }
 
     void Update()
@@ -117,10 +122,13 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         dashButton.interactable = true;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        animationManager.PlayActionAnimation("Dash");
+        animationManager.StartDash();
         yield return new WaitForSeconds(dashingTime);
         isDashing = false;
         dashButton.interactable = false;
         rb.gravityScale = originalGravity;
+        animationManager.EndDash();
         yield return new WaitForSeconds(dashingCD);
         canDash = true;
         dashButton.interactable = true;

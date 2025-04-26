@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyRecievaDamage : MonoBehaviour
 {
+    [SerializeField] private GameObject vfxDeath;
     private int actualLife = 100;
 
     public void EnemyDamage(int damage)
@@ -12,6 +13,7 @@ public class EnemyRecievaDamage : MonoBehaviour
 
         if(actualLife <= 0)
         {
+            Instantiate(vfxDeath, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

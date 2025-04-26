@@ -10,9 +10,10 @@ public class PlayerDamageSystemV2 : MonoBehaviour
     public float damageRange = 0.5f;
     public LayerMask enemyLayer;
 
+    AnimationManager animationManager;
     void Start()
     {
-
+        animationManager = GetComponent<AnimationManager>();
     }
     void Update()
     {
@@ -20,23 +21,31 @@ public class PlayerDamageSystemV2 : MonoBehaviour
         
         if(attacking == true)
         {
-            Attack();
+            StartCoroutine(AttackAction());
             Debug.Log("Ataque");
         }
 
     }
 
 
-    void Attack()
+    IEnumerator AttackAction()
+    {
+        attacking = false;
+        animationManager.PlayActionAnimation("Attack");
+        yield return new WaitForSeconds(0.25f);
+        AttackCheck();
+        attacking = true;
+
+    }
+    void AttackCheck()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemyLayer);
 
-        foreach(Collider2D enemies in hitEnemies)
+        foreach (Collider2D enemies in hitEnemies)
         {
             enemies.GetComponent<EnemyRecievaDamage>().EnemyDamage(100);
         }
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(damagePointer.position, damageRange); 

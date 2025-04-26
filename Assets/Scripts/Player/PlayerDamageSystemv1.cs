@@ -14,6 +14,9 @@ public class PlayerDamageSystemv1 : MonoBehaviour
     private Vector2 screenPosition;
     private Vector2 worldPosition;
 
+
+    [Header("Animation Ref")]
+    AnimationManager animationManager;
     void Update()
     {
         screenPosition = Input.mousePosition;
@@ -40,6 +43,7 @@ public class PlayerDamageSystemv1 : MonoBehaviour
 
     void Attack()
     {
+        animationManager.PlayActionAnimation("Attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
