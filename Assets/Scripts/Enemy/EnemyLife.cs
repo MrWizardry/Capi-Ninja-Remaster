@@ -7,6 +7,8 @@ public class EnemyLife : MonoBehaviour
 {
     public int maxHealth = 100; // Vida máxima do inimigo
     private int currentHealth; // Vida atual do inimigo
+
+    [SerializeField] private GameObject vfxDeath;
     void Start()
     {
         currentHealth = maxHealth;
@@ -24,7 +26,8 @@ public class EnemyLife : MonoBehaviour
 
     void Die()
     {
+        Instantiate(vfxDeath, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         Debug.Log("Inimigo Morreu");
-        Destroy(gameObject); // Destroi o objeto inimigo
     }
 }

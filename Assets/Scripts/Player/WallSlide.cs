@@ -25,14 +25,13 @@ public class WallSlide : MonoBehaviour
 
     private float wallJumpGraceTime = 0.2f;
     private float wallJumpGraceCounter = 0f;
-    private Animator anim;
+    private AnimationManager animManager;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
+        animManager = GetComponent<AnimationManager>();
         // Cria ponto de checagem da parede, se não tiver
         if (wallCheck == null)
         {
@@ -60,6 +59,9 @@ public class WallSlide : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
+            
+
+            animManager.PlayActionAnimation("Wall_Slide");
         }
 
         // Wall jump buffer
@@ -81,10 +83,8 @@ public class WallSlide : MonoBehaviour
             wallJumpGraceCounter = 0f;
 
             // FORÇA a animação parar após pulo
-            anim.SetBool("IsWS", false);
         }
-
-        UpdateWallSlideAnimation(); // Deixa isso separado
+        //UpdateWallSlideAnimation(); // Deixa isso separado
     }
 
     void CheckWall()
@@ -103,6 +103,7 @@ public class WallSlide : MonoBehaviour
         }
 
         wallDirection = hitRight.collider != null ? 1 : -1;
+        animManager.SetDirection(wallDirection);
         wallJumpGraceCounter = wallJumpGraceTime;
     }
     else if(IsGrounded() || !isTouchingWall)
@@ -135,14 +136,14 @@ public class WallSlide : MonoBehaviour
         // Se tocar o chão, força sair da animação
         if (isGrounded)
         {
-            anim.SetBool("IsWS", false);
+            //anim.SetBool("IsWS", false);
         }
         // WS continua enquanto estiver deslizando, ou seja: tocando parede, no ar e descendo
         bool isWallSticking = isWallSliding && !isGrounded;
 
-        anim.SetBool("IsWS", isWallSticking);
+        /*anim.SetBool("IsWS", isWallSticking);
         anim.SetInteger("WallCon", wallDirection);
-        anim.SetFloat("VerticalSpeed", rb.velocity.y);
+        anim.SetFloat("VerticalSpeed", rb.velocity.y);*/
 
     }
 

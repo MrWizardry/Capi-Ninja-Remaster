@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Dash : MonoBehaviour
 {
     private Rigidbody2D rb; // Rigidbody do player
-    private Animator animator;
+    private AnimationManager animManager;
     private float horizontal; // Direção do input horizontal
     [SerializeField] private float speed = 8f; // Velocidade do player
 
@@ -28,7 +28,7 @@ public class Dash : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Pega o Rigidbody2D no Start
-        animator = GetComponent<Animator>(); // Pega o Animator do player
+        animManager = GetComponent<AnimationManager>();// Pega o Animator do player
     }
 
 
@@ -53,6 +53,17 @@ public class Dash : MonoBehaviour
             return;
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
+    
+
+    // --- FLIP SPRITE ---
+    private void TrackDirection()
+    {
+        // Se mudar de direção, vira o sprite horizontalmente
+        if (horizontal < 0f ||horizontal > 0f)
+        {
+            animManager.SetDirection(horizontal);
+        }
+    }
 
     // --- DASH COROUTINE ---
     private IEnumerator FWDash()
@@ -76,11 +87,14 @@ public class Dash : MonoBehaviour
         // Aplica o dash com força na direção
         rb.velocity = direction * dashingPower;
 
-        animator.SetBool("IsDashing", true); // Ativa animação de dash
+        animManager.PlayActionAnimation("Dash");// Ativa animação de dash
+        animManager.SetAnimState(true); 
+        animManager.StartDash();
 
         yield return new WaitForSeconds(dashingTime); // Espera o tempo do dash
 
-        animator.SetBool("IsDashing", false);
+        animManager.SetAnimState(false);
+        animManager.EndDash();
         // Termina o dash
         isDashing = false;
         dashButton.interactable = false;
