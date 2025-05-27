@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player_Damage_Direct : MonoBehaviour
@@ -9,12 +9,14 @@ public class Player_Damage_Direct : MonoBehaviour
     public Transform damagePointer;
 
     public float damageRange = 0.5f;
-    //public LayerMask enemy;
+    public LayerMask enemy;
     public int damage = 20;
+
+    private AnimationManager animManager;
 
     void Start()
     {
-
+        animManager = GetComponent<AnimationManager>();
     }
     void Update()
     {
@@ -22,35 +24,34 @@ public class Player_Damage_Direct : MonoBehaviour
         
         if(attacking == true)
         {
-            Attack();
+            StartCoroutine(Attack());
             Debug.Log("Ataque direto");
         }
 
     }
 
 
-    void Attack()
+    /*void Attack()
     {
-        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(damagePointer.position, damageRange);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemy);
 
-        foreach(Collider2D obj in hitObjects)
+        foreach(Collider2D enemy in hitEnemies)
         {
-            if(obj.CompareTag("enemy") || obj.CompareTag("boss"))
-            {
-                Controller_Jaré jare = obj.GetComponent<Controller_Jaré>();
-                if(jare != null)
-                {
-                    jare.TakeDamage(damage);
-                    Debug.Log("Dano causado: " + damage);
-                }
-                EnemyLife enemy = obj.GetComponent<EnemyLife>();
-                if(enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-                    Debug.Log("Dano causado: " + damage);
-                }
-            }
+            enemy.GetComponent<EnemyLife>().TakeDamage(damage);
         }
+    }*/
+
+    private IEnumerator Attack()
+    {
+        animManager.PlayHighPriority("Attack");
+        yield return new WaitForSeconds(0.25f);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(damagePointer.position, damageRange, enemy);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyLife>().TakeDamage(damage);
+        }
+
     }
 
     private void OnDrawGizmosSelected()

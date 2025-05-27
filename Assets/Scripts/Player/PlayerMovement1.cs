@@ -26,6 +26,7 @@ public class PlayerMovement1 : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.2f; // Tempo extra pra permitir pulo depois de sair do chão
     private float coyoteTimecount; // Contador interno do coyote time
 
+    private bool isJumping;
     [SerializeField] private float jumpbuffer = 0.2f; // Buffer pra quando o player aperta pulo cedo demais
     private float jumpbuffercount; // Contador interno do buffer
 
@@ -33,28 +34,35 @@ public class PlayerMovement1 : MonoBehaviour
     private float jumpCooldownTimer = 0f; // Contador de cooldown do pulo
 
     private string currentSceneName; // Nome da cena atual pra reiniciar
-    private Animator animator;
+    private AnimationManager animManager;
     private Dash dash;
 
+    private WallSlide wallSlide;
 
     // --- START ---
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Pega o Rigidbody2D no Start
         currentSceneName = SceneManager.GetActiveScene().name; // Salva o nome da cena atual
-        animator = GetComponent<Animator>(); // Pega o Animator do player
+        animManager= GetComponent<AnimationManager>();
         dash = GetComponent<Dash>(); // Pega o script de dash
+        isJumping = false;
+        wallSlide = GetComponent<WallSlide>();
     }
 
     // --- UPDATE ---
     void Update()
     {
+        #region Jump Functions
         // INPUT HORIZONTAL (Setas ou A/D)
         horizontal = Input.GetAxisRaw("Horizontal");
 
         // COYOTE TIME — se está no chão, reseta o tempo
         if (IsGrounded())
-            coyoteTimecount = coyoteTime;
+            {
+                coyoteTimecount = coyoteTime;
+                isJumping = false;
+            }
         else
             coyoteTimecount -= Time.deltaTime;
         
@@ -72,9 +80,14 @@ public class PlayerMovement1 : MonoBehaviour
         // CONDIÇÃO PRA PULAR:
         if (jumpbuffercount > 0f && coyoteTimecount > 0f && jumpCooldownTimer <= 0f)
         {
+            isJumping = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower); // Aplica força do pulo
             jumpbuffercount = 0f; // Zera o buffer
             jumpCooldownTimer = jumpCoolDown; // Ativa o cooldown
+
+            if(rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
+            else if(rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
+
         }
 
         // SE SOLTAR O BOTÃO DE PULO ENQUANTO SOBE, corta o pulo (pulo mais curto)
@@ -82,32 +95,35 @@ public class PlayerMovement1 : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimecount = 0f; // Zera o coyote pra evitar pulo duplo
-        }       
 
-        // FLIP — vira o personagem pro lado correto
-        Flip();
-
+        } 
+        else{}
+        #endregion
         // CHECA SE CAIU NA "ZONA DE MORTE"
         if (Respawncheck())
             SceneManager.LoadScene(currentSceneName);
-
-        animator.SetFloat("Speed", Mathf.Abs(horizontal)); // Atualiza a animação de andar
-        animator.SetBool("IsJumping",!IsGrounded()); // Atualiza a animação de pulo
-        animator.SetBool("IsDashing", dash.IsDashing()); // Atualiza a animação de dash
-
-    }
-
-    // --- FLIP SPRITE ---
-    private void Flip()
-    {
-        // Se mudar de direção, vira o sprite horizontalmente
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        
+        #region ANIMATIONS
+            
+        if((isJumping || !IsGrounded()) && !wallSlide.isWallSliding)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            if(rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
+            else if(rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Middle");
         }
+        else
+        {
+            if(rb.velocity == Vector2.zero && IsGrounded() == true)
+                animManager.PlayActionAnimation("Idle");
+            else if (rb.velocityX != 0 && rb.velocityY == 0)
+                animManager.PlayActionAnimation("Run");
+        }
+
+
+        if (horizontal < 0f || horizontal > 0f)
+        {
+            animManager.SetDirection(horizontal);
+        }
+        #endregion
     } 
 
     // --- CHECA SE TOCOU NA ZONA DE MORTE ---

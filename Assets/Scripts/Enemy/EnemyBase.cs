@@ -27,9 +27,12 @@ public class EnemyBase : MonoBehaviour
 
     private bool canMove = true;
 
+    private Animator animManager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animManager = GetComponent<Animator>();
     }
 
     private void Update()
@@ -72,6 +75,8 @@ public class EnemyBase : MonoBehaviour
         {
             Flip();
         }
+        animManager.Play("Run");
+        Debug.Log("Achou!");
     }
 
     private void Patrol()
@@ -88,8 +93,9 @@ public class EnemyBase : MonoBehaviour
         {
             Flip();
         }
-
+        animManager.Play("Walk");
         rb.velocity = new Vector2(direction * patrolSpeed, rb.velocity.y);
+        Debug.Log("Patrulha");
     }
 
     private void Flip()
@@ -165,5 +171,9 @@ public class EnemyBase : MonoBehaviour
     public void ResumeMovement()
     {
         canMove = true;
+    }
+    public void PlayAttackAnim()
+    {
+        animManager.Play("Attack");
     }
 }

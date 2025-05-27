@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
-    public bool isDead = false; // Nova variável para saber se o inimigo morreu
+    public int maxHealth = 100; // Vida máxima do inimigo
+    private int currentHealth; // Vida atual do inimigo
 
+    [SerializeField] private GameObject vfxDeath;
     void Start()
     {
         currentHealth = maxHealth;
@@ -16,11 +16,8 @@ public class EnemyLife : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isDead) return;
-
-        currentHealth -= damage;
+        currentHealth -= damage ; // Dano fixo de 10, você pode modificar isso para ser variável
         Debug.Log("inimigo tomou dano: " + damage + " | Vida atual: " + currentHealth);
-
         if (currentHealth <= 0)
         {
             Die();
@@ -29,15 +26,8 @@ public class EnemyLife : MonoBehaviour
 
     void Die()
     {
-        if (isDead) return;
-
-        isDead = true;
+        Instantiate(vfxDeath, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         Debug.Log("Inimigo Morreu");
-        Destroy(gameObject);
-    }
-
-    public bool IsDead()
-    {
-        return isDead;
     }
 }
