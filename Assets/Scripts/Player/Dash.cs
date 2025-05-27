@@ -13,7 +13,7 @@ public class Dash : MonoBehaviour
     // --- DASH ---
     [Header("Dash")]
     private bool canDash = true; // Controle de cooldown do dash
-    private bool isDashing; // Checa se está dashing
+    public bool isDashing; // Checa se está dashing
     private float dashingPower = 24f; // Velocidade do dash
     private float dashingTime = 0.2f; // Duração do dash
     private float dashingCD = 1f; // Cooldown entre dashes
