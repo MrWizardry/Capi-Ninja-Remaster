@@ -28,17 +28,16 @@ public class Enemy_Attack : MonoBehaviour
 
         if(!isAttacking && distance <= attackRange) // Se não está atacando e o jogador está dentro do alcance de ataque
         {
-            StartCoroutine(Attack()); // Inicia o ataque
+            isAttacking = true; // Define que o inimigo está atacando
+            enemyBase.StopMovement(); // Para o movimento do inimigo (método a ser implementado no EnemyBase)
+
+            // Aqui você pode adicionar a lógica de ataque, como animações ou danos ao jogador
+            enemyBase.PlayAttackAnim();
         }
     }
 
     IEnumerator Attack()
     {
-        isAttacking = true; // Define que o inimigo está atacando
-        enemyBase.StopMovement(); // Para o movimento do inimigo (método a ser implementado no EnemyBase)
-
-        // Aqui você pode adicionar a lógica de ataque, como animações ou danos ao jogador
-        Debug.Log("Ataque!");
 
         Player_Life player_Life = player.GetComponent<Player_Life>(); // Obtém a referência ao Player_Life
         if(player_Life != null) // Verifica se o Player_Life não é nulo

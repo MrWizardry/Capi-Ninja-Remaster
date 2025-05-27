@@ -117,9 +117,12 @@ public class PlayerMovement1 : MonoBehaviour
             else if (rb.velocityX != 0 && rb.velocityY == 0)
                 animManager.PlayActionAnimation("Run");
         }
-        
 
-        animManager.SetDirection(horizontal);
+
+        if (horizontal < 0f || horizontal > 0f)
+        {
+            animManager.SetDirection(horizontal);
+        }
         #endregion
     } 
 

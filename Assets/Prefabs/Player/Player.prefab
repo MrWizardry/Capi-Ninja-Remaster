@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2c645c36ae87f4e99ccc6226c71424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerdamage: 10
-  maxHealth: 100
+  playerdamage: 1
+  maxHealth: 1
 --- !u!114 &9017340274164533075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 60, y: 60}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
