@@ -154,7 +154,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Blocking L_0018_0: -8477172274826027214
+      Blocking L_0018_1: 3661856889746612251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
