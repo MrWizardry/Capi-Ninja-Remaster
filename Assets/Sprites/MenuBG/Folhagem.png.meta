@@ -29,6 +29,15 @@ TextureImporter:
   - first:
       213: -3583793993548147626
     second: Folhagem_8
+  - first:
+      213: -2310652971506711539
+    second: Folhagem_9
+  - first:
+      213: -8399775504220599487
+    second: Folhagem_10
+  - first:
+      213: -1246868846571499936
+    second: Folhagem_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,10 +157,10 @@ TextureImporter:
       name: Folhagem_1
       rect:
         serializedVersion: 2
-        x: 1626
-        y: 325
-        width: 294
-        height: 337
+        x: 1904
+        y: 465
+        width: 16
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +178,10 @@ TextureImporter:
       name: Folhagem_2
       rect:
         serializedVersion: 2
-        x: 289
-        y: 306
-        width: 209
-        height: 26
+        x: 1810
+        y: 438
+        width: 73
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +199,10 @@ TextureImporter:
       name: Folhagem_3
       rect:
         serializedVersion: 2
-        x: 516
-        y: 317
-        width: 12
-        height: 6
+        x: 1901
+        y: 444
+        width: 19
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +220,10 @@ TextureImporter:
       name: Folhagem_4
       rect:
         serializedVersion: 2
-        x: 1376
-        y: 33
-        width: 10
-        height: 7
+        x: 1759
+        y: 436
+        width: 18
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +241,10 @@ TextureImporter:
       name: Folhagem_5
       rect:
         serializedVersion: 2
-        x: 1410
-        y: 28
-        width: 28
-        height: 14
+        x: 289
+        y: 306
+        width: 209
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +262,10 @@ TextureImporter:
       name: Folhagem_6
       rect:
         serializedVersion: 2
-        x: 1439
-        y: 18
-        width: 41
-        height: 31
+        x: 516
+        y: 317
+        width: 12
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,10 +283,10 @@ TextureImporter:
       name: Folhagem_7
       rect:
         serializedVersion: 2
-        x: 1358
-        y: 25
-        width: 12
-        height: 6
+        x: 1376
+        y: 33
+        width: 10
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,6 +304,69 @@ TextureImporter:
       name: Folhagem_8
       rect:
         serializedVersion: 2
+        x: 1410
+        y: 28
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6545262c95ec34ec0800000000000000
+      internalID: -3583793993548147626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Folhagem_9
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 18
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0444226d59eeefd0800000000000000
+      internalID: -2310652971506711539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Folhagem_10
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 25
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b47edcea00e6b80800000000000000
+      internalID: -8399775504220599487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Folhagem_11
+      rect:
+        serializedVersion: 2
         x: 1397
         y: 23
         width: 13
@@ -306,8 +378,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6545262c95ec34ec0800000000000000
-      internalID: -3583793993548147626
+      spriteID: 06eca96e36b32bee0800000000000000
+      internalID: -1246868846571499936
       vertices: []
       indices: 
       edges: []
@@ -325,6 +397,8 @@ TextureImporter:
     nameFileIdTable:
       Folhagem_0: 7562055260959099631
       Folhagem_1: 4508895973836992226
+      Folhagem_10: -8399775504220599487
+      Folhagem_11: -1246868846571499936
       Folhagem_2: 3313546883320076536
       Folhagem_3: 4272421677329719684
       Folhagem_4: 2930270951793015625
@@ -332,6 +406,7 @@ TextureImporter:
       Folhagem_6: -3880120432841949545
       Folhagem_7: -7527262436133477522
       Folhagem_8: -3583793993548147626
+      Folhagem_9: -2310652971506711539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
