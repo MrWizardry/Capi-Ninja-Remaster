@@ -15,7 +15,6 @@ public class Brightness_Control : MonoBehaviour
         slider.onValueChanged.AddListener(SetBrightnessLevel);
     }
 
-    // Chame este método diretamente pelo Slider (OnValueChanged → Brightness_Control → SetBrightnessLevel)
     public void SetBrightnessLevel(float sliderVal)
     {
         Color color = imageBlacken.color;
