@@ -8,13 +8,13 @@ public class Player_Defense : MonoBehaviour
     //public float defenseDuration = 1f;
     private float defenseTimer = 0f;
     public GameObject defenceBarrier;
-    private PlayerMovement1 playerMovement;
+    private Movement playerMovement;
     private Dash dashScript;
     private WallSlide wsScript;
 
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement1>();
+        playerMovement = GetComponent<Movement>();
         dashScript = GetComponent<Dash>();
         wsScript = GetComponent<WallSlide>();
     }

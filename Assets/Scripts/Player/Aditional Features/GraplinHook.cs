@@ -1,58 +1,122 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class GraplinHook : MonoBehaviour
+public class GrapplingHook : MonoBehaviour
 {
-    public float hookDistance = 10f;
-    public float hookSpeedBoostPercent = 50f;
-    public LayerMask Layers;
-    public Transform player;
-    private Rigidbody2D playerRb;
-    
-    private bool isGrappling = false;
-    private Vector2 grapplePoint;
+    [Header("Config")]
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private LayerMask grappleLayer;
+    [SerializeField] private float maxDistancePixels = 560f;
+    [SerializeField] private float pullSpeed = 10f;
+    [SerializeField] private float momentumForce = 15f;
+
+    [SerializeField]private Vector2 grapplePoint;
+    private Rigidbody2D rb;
+    private bool isPulling = false;
+    private bool isHooked = false;
+
+    private Camera mainCamera;
+    private float maxDistanceUnits => maxDistancePixels / 100f;
 
     void Start()
     {
-        playerRb = player.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
+        lineRenderer.positionCount = 0;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Botão esquerdo do mouse
+        if (Custom_Input.GetKeyDown("Grapple"))
         {
-            FireHook();
+            TryGrapple();
+        }
+
+        if (Custom_Input.GetKey("Grapple") && isHooked)
+        {
+            isPulling = true;
+        }
+
+        if (Custom_Input.GetKeyUp("Grapple"))
+        {
+            if (!isPulling && isHooked)
+            {
+                // aplicar momentum apenas se soltar rápido
+                Vector2 direction = (grapplePoint - rb.position).normalized;
+                rb.velocity += direction * momentumForce;
+            }
+
+            ResetGrapple();
+        }
+
+        if (isHooked)
+        {
+            DrawLine();
+        }
+        if ((Vector2)transform.position == grapplePoint) // Reset position if below a certain point
+        {
+            ResetGrapple();
         }
     }
 
-    void FireHook()
+    void FixedUpdate()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+        if (isPulling && isHooked)
+        {
+            Vector2 direction = (grapplePoint - rb.position).normalized;
+            float distance = Vector2.Distance(rb.position, grapplePoint);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, hookDistance, Layers);
-        
+            // Verifica colisão no caminho
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, distance, grappleLayer);
+            if (hit.collider != null && Vector2.Distance(hit.point, grapplePoint) > 0.1f)
+            {
+                ResetGrapple(); // Colidiu com algo no meio, cancela
+                return;
+            }
+
+            // Assuming you have a Movement component attached to the same GameObject
+            float currentSpeed = GetComponent<Movement>().currentSpeed;
+            rb.velocity = currentSpeed * (direction * pullSpeed); // Move o Rigidbody na direção do ponto de grappling
+            //direction * pullSpeed 
+            if (distance < 0.5f)
+            {
+                ResetGrapple(); // Chegou ao ponto
+            }
+        }
+    }
+
+    void TryGrapple()
+    {
+        Vector2 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 origin = rb.position;
+        Vector2 direction = (mouseWorldPos - origin).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistanceUnits, grappleLayer);
+
         if (hit.collider != null)
         {
             grapplePoint = hit.point;
-            ApplyBoost(direction);
-            isGrappling = true;
-
-            Debug.DrawLine(transform.position, grapplePoint, Color.green, 1f);
-        }
-        else
-        {
-            Debug.DrawLine(transform.position, transform.position + (Vector3)(direction * hookDistance), Color.red, 1f);
+            isHooked = true;
+            lineRenderer.positionCount = 2;
         }
     }
 
-    void ApplyBoost(Vector2 direction)
+    void ResetGrapple()
     {
-        float boostMultiplier = 1 + (hookSpeedBoostPercent / 100f);
-        Vector2 boostForce = direction * playerRb.velocity.magnitude * boostMultiplier;
+        isPulling = false;
+        isHooked = false;
+        lineRenderer.positionCount = 0;
+    }
 
-        playerRb.velocity = boostForce; // Substitui velocidade ou usa AddForce se quiser acumular
+    void DrawLine()
+    {
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, grapplePoint);
+    }
+
+    public bool IsPulling()
+    {
+        return isPulling;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 
 public class TimeStop : MonoBehaviour
@@ -13,11 +14,7 @@ public class TimeStop : MonoBehaviour
     void Start()
     {
         isPaused = false;
-        // Ensure the pause menu is not active at the start
-        if (pauseMenu != null)
-        {
-            pauseMenu.SetActive(false);
-        }
+        pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame

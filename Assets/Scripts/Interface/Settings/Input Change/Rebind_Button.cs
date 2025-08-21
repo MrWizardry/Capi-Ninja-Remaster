@@ -12,7 +12,8 @@ public enum InputAction
     Defend,
     Left,
     Right,
-    Pause
+    Pause,
+    Grapple
 }
 
 public class Rebind_Button : MonoBehaviour
