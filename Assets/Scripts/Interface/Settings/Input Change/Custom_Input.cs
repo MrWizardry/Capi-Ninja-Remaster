@@ -27,6 +27,13 @@ public static class Custom_Input
         return false;
     }
 
+    public static bool GetKey(string action)
+    {
+        if (keyBindings.ContainsKey(action))
+            return Input.GetKey(keyBindings[action]);
+        return false;
+    }
+
     public static void SetKey(string action, KeyCode key)
     {
         keyBindings[action] = key;
@@ -43,6 +50,8 @@ public static class Custom_Input
         SetDefault("Left", KeyCode.A);
         SetDefault("Right", KeyCode.D);
         SetDefault("Pause", KeyCode.Escape);
+        SetDefault("Grapple", KeyCode.G);
+        
     }
 
     private static void SetDefault(string action, KeyCode defaultKey)
