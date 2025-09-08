@@ -14,9 +14,7 @@ GameObject:
   - component: {fileID: 2062281255720736069}
   - component: {fileID: 50479514644027715}
   - component: {fileID: 1794204537550287103}
-  - component: {fileID: 1081285574149893728}
   - component: {fileID: 1830064506248948195}
-  - component: {fileID: 8033707589397353373}
   - component: {fileID: 4881082825802691741}
   - component: {fileID: 9017340274164533075}
   - component: {fileID: 4626785093328879776}
@@ -128,9 +126,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walk: 6
   running: 12
-  accelerationTime: 2
-  decelerationTime: 1
+  MaxSpeed: 20
+  accelerationTime: 1
+  decelerationTime: 0.09
   currentSpeed: 0
+  rb: {fileID: 0}
+  driftSpeed: 5
   groundCheck: {fileID: 4076998805811337642}
   groundLayer:
     serializedVersion: 2
@@ -139,6 +140,7 @@ MonoBehaviour:
   coyoteTime: 0.2
   jumpbuffer: 0.001
   jumpCoolDown: 0.2
+  animManager: {fileID: 0}
 --- !u!114 &50479514644027715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,22 +186,6 @@ MonoBehaviour:
   isTouchingWall: 0
   isWallSliding: 0
   overrideHorizontal: 0
---- !u!114 &1081285574149893728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713591552729757737}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e41bc29bf0c2c4799eeeb098e7c045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  isDashing: 0
-  maxDashDistance: 5
-  dashButton: {fileID: 0}
 --- !u!95 &1830064506248948195
 Animator:
   serializedVersion: 7
@@ -222,19 +208,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8033707589397353373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713591552729757737}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01dfb3c1256f8e74584d52911d7c328f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defenceBarrier: {fileID: 8329437879169610060}
 --- !u!114 &4881082825802691741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,8 +257,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxDistancePixels: 560
-  pullSpeed: 10
+  pullSpeed: 2
   momentumForce: 15
+  grapplePoint: {x: 0, y: 0}
 --- !u!120 &5762776455929904854
 LineRenderer:
   serializedVersion: 2

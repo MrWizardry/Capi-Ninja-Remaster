@@ -10,8 +10,9 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private float maxDistancePixels = 560f;
     [SerializeField] private float pullSpeed = 10f;
     [SerializeField] private float momentumForce = 15f;
+    [SerializeField] private float pullForceUP = 5f;
 
-    [SerializeField]private Vector2 grapplePoint;
+    [SerializeField] private Vector2 grapplePoint;
     private Rigidbody2D rb;
     private bool isPulling = false;
     private bool isHooked = false;
@@ -77,7 +78,10 @@ public class GrapplingHook : MonoBehaviour
 
             // Assuming you have a Movement component attached to the same GameObject
             float currentSpeed = GetComponent<Movement>().currentSpeed;
-            rb.velocity = currentSpeed * (direction * pullSpeed); // Move o Rigidbody na direção do ponto de grappling
+            if(currentSpeed != 0)
+                rb.velocity = currentSpeed * (direction * pullSpeed);
+            else
+                rb.velocity = direction * (pullSpeed * pullForceUP);    // Move o Rigidbody na direção do ponto de grappling
             //direction * pullSpeed 
             if (distance < 0.5f)
             {
@@ -99,6 +103,24 @@ public class GrapplingHook : MonoBehaviour
             grapplePoint = hit.point;
             isHooked = true;
             lineRenderer.positionCount = 2;
+
+            // --- NOVO SISTEMA DE IMPULSO ---
+            Movement movement = GetComponent<Movement>();
+            float inputDir = Mathf.Sign(direction.x); // Direção do grapple (esquerda -1 / direita +1)
+            float moveDir = Mathf.Sign(movement.rb.velocity.x); // Direção atual do player
+
+            if (moveDir == inputDir && Mathf.Abs(movement.currentSpeed) > 0.1f)
+            {
+                // Se a direção for a mesma, soma velocidade (impulso extra)
+                rb.velocity += direction * movement.currentSpeed;
+            }
+            else
+            {
+                // Se a direção for contrária, zera a velocidade e "vira"
+                rb.velocity = Vector2.zero;
+                movement.currentSpeed = 0f;
+                movement.animManager.SetDirection(inputDir); // Faz o personagem virar
+            }
         }
     }
 

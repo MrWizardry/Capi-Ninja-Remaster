@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,87 +15,83 @@ public class Movement : MonoBehaviour
     private float moveDirection = 0f;
     [SerializeField] private float walk = 6f; // Velocidade do player
     [SerializeField] private float running = 8f;
+    [SerializeField] private float MaxSpeed = 20f;
     [SerializeField] private float accelerationTime = 2f;
     [SerializeField] private float decelerationTime = 1f; // Tempo pra acelerar e desacelerar
     public float currentSpeed;
     private float accelerationTimer = 0f;
-    private Rigidbody2D rb; // Rigidbody do player
+    public Rigidbody2D rb; // Rigidbody do player
 
+    [Header("Drift")]
+    [SerializeField] private float driftSpeed = 5f; // Quanto mais baixo, mais demora pra trocar direção
 
     // --- LAYERS ---
     [Header("Aplicações")]
-    [SerializeField] private Transform groundCheck; // Posição usada pra checar se está no chão
-    [SerializeField] private LayerMask groundLayer; // Layer do chão
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
     // --- JUMP SYSTEM ---
     [Header("Jump")]
-    [SerializeField] private float jumpingPower = 16f; // Força do pulo
-    [SerializeField] private float coyoteTime = 0.2f; // Tempo extra pra permitir pulo depois de sair do chão
-    private float coyoteTimecount; // Contador interno do coyote time
-
+    [SerializeField] private float jumpingPower = 16f;
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteTimecount;
     private bool isJumping;
-    [SerializeField] private float jumpbuffer = 0.2f; // Buffer pra quando o player aperta pulo cedo demais
-    private float jumpbuffercount; // Contador interno do buffer
+    [SerializeField] private float jumpbuffer = 0.2f;
+    private float jumpbuffercount;
+    [SerializeField] private float jumpCoolDown = 0.2f;
+    private float jumpCooldownTimer = 0f;
 
-    [SerializeField] private float jumpCoolDown = 0.2f; // Tempo entre pulos
-    private float jumpCooldownTimer = 0f; // Contador de cooldown do pulo
-    private AnimationManager animManager;
+    public AnimationManager animManager;
     private WallSlide wallSlide;
     private GrapplingHook grapplingHook;
 
     // --- START ---
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Pega o Rigidbody2D no Start
+        rb = GetComponent<Rigidbody2D>();
         animManager = GetComponent<AnimationManager>();
         isJumping = false;
         wallSlide = GetComponent<WallSlide>();
         grapplingHook = GetComponent<GrapplingHook>();
         currentSpeed = 0f;
     }
+
     void Update()
     {
         #region Movement
         if (Custom_Input.GetKey("Right"))
-        {
-            inputDirection = 1f; // Direção direita
-
-        }
+            inputDirection = 1f;
         else if (Custom_Input.GetKey("Left"))
-        {
-            inputDirection = -1f; // Direção esquerda
-
-        }
+            inputDirection = -1f;
         else
-        {
-            inputDirection = 0f; // Sem direção
-        }
+            inputDirection = 0f;
+
         if (inputDirection != 0)
         {
             accelerationTimer += Time.deltaTime;
             currentSpeed = Mathf.Lerp(0f, running, accelerationTimer / accelerationTime);
-            moveDirection = inputDirection;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+
+            // Drift na troca de direção
+            moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, driftSpeed * Time.deltaTime);
         }
         else
         {
             accelerationTimer = 0f;
 
-            // Desacelera suavemente, mantendo a moveDirection
             if (currentSpeed > 0f)
             {
                 currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime / decelerationTime);
                 if (currentSpeed < 1f)
-                {
                     currentSpeed = 0f;
-                }
             }
-        }
 
+            // Drift de desaceleração (escorrega ao parar)
+            moveDirection = Mathf.MoveTowards(moveDirection, 0f, driftSpeed * Time.deltaTime);
+        }
         #endregion
 
         #region Jump Functions
-
-        // COYOTE TIME — se está no chão, reseta o tempo
         if (IsGrounded())
         {
             coyoteTimecount = coyoteTime;
@@ -103,42 +100,33 @@ public class Movement : MonoBehaviour
         else
             coyoteTimecount -= Time.deltaTime;
 
-
-        // COOLDOWN DO PULO — conta regressiva
         if (jumpCooldownTimer > 0f)
             jumpCooldownTimer -= Time.deltaTime;
 
-        // BUFFER DE PULO — salva se o jogador apertar antes de poder pular
         if (Input.GetButtonDown("Jump"))
             jumpbuffercount = jumpbuffer;
         else
             jumpbuffercount -= Time.deltaTime;
 
-        // CONDIÇÃO PRA PULAR:
         if (jumpbuffercount > 0f && coyoteTimecount > 0f && jumpCooldownTimer <= 0f)
         {
             isJumping = true;
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower); // Aplica força do pulo
-            jumpbuffercount = 0f; // Zera o buffer
-            jumpCooldownTimer = jumpCoolDown; // Ativa o cooldown
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            jumpbuffercount = 0f;
+            jumpCooldownTimer = jumpCoolDown;
 
             if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
             else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
-
         }
 
-        // SE SOLTAR O BOTÃO DE PULO ENQUANTO SOBE, corta o pulo (pulo mais curto)
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            coyoteTimecount = 0f; // Zera o coyote pra evitar pulo duplo
-
+            coyoteTimecount = 0f;
         }
-        else { }
         #endregion
 
         #region Animation
-
         if ((isJumping || !IsGrounded()) && !wallSlide.isWallSliding)
         {
             if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
@@ -153,31 +141,33 @@ public class Movement : MonoBehaviour
         }
 
         if (inputDirection != 0)
-        {
             animManager.SetDirection(inputDirection);
-        }
         #endregion
 
+        #region Pixel Velocity
+            float velocityUnitys = rb.velocity.magnitude;
+            float pixelsPerUnity = 100f;
+            float velocityPixels = velocityUnitys * pixelsPerUnity;
+
+            Debug.Log($"Velocidade em UU/s: {velocityUnitys} | Velocidade em Pixels/s: {velocityPixels}");
+        #endregion
     }
+
     void FixedUpdate()
     {
-        /*if (wallSlide == null || !wallSlide.overrideHorizontal)
-        {
-            rb.velocity = new Vector2(moveDirection * currentSpeed, rb.velocity.y);
-        }*/
-
         if ((grapplingHook != null && grapplingHook.IsPulling()) || (wallSlide != null && wallSlide.overrideHorizontal))
-        {
             return;
-        }
 
         rb.velocity = new Vector2(moveDirection * currentSpeed, rb.velocity.y);
+
+        float clampedX = Mathf.Clamp(rb.velocity.x, -MaxSpeed, MaxSpeed);
+        float clampedY = Mathf.Clamp(rb.velocity.y, -MaxSpeed, MaxSpeed);
+
+        rb.velocity = new Vector2(clampedX, clampedY);
     }
 
-    // --- CHECA SE ESTÁ NO CHÃO ---
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-
 }

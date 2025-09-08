@@ -5,15 +5,14 @@ using UnityEngine;
 public class Enemy_Attack : MonoBehaviour
 {
 
-    #region Variables
     public Transform player;
-    public float attackRange = 1f; // Distância do ataque
+    public float attackRange = 1f; 
     public float attackCD = 1f;
-    public int damage = 10; // Dano fixo de 10, você pode modificar isso para ser variável
+    public int damage = 10; 
 
     private bool isAttacking = false;
-    private EnemyBase enemyBase; // Referência ao EnemyBase 
-    #endregion
+    private EnemyBase enemyBase; 
+    
 
     private void Start()
     {
@@ -24,14 +23,12 @@ public class Enemy_Attack : MonoBehaviour
     {
         if(player == null || enemyBase == null) return; // Verifica se player ou enemyBase são nulos
 
-        float distance = Vector2.Distance(transform.position, player.position); // Distância entre o inimigo e o jogador
+        float distance = Vector2.Distance(transform.position, player.position);
 
-        if(!isAttacking && distance <= attackRange) // Se não está atacando e o jogador está dentro do alcance de ataque
+        if (!isAttacking && distance <= attackRange)
         {
-            isAttacking = true; // Define que o inimigo está atacando
-            enemyBase.StopMovement(); // Para o movimento do inimigo (método a ser implementado no EnemyBase)
-
-            // Aqui você pode adicionar a lógica de ataque, como animações ou danos ao jogador
+            isAttacking = true;
+            StartCoroutine(Attack());
             enemyBase.PlayAttackAnim();
         }
     }
@@ -39,17 +36,26 @@ public class Enemy_Attack : MonoBehaviour
     IEnumerator Attack()
     {
 
-        Player_Life player_Life = player.GetComponent<Player_Life>(); // Obtém a referência ao Player_Life
-        if(player_Life != null) // Verifica se o Player_Life não é nulo
+        // Para o movimento e toca animação
+        enemyBase.StopMovement();
+    
+        // Espera o tempo da animação ou um delay pequeno
+        yield return new WaitForSeconds(0.3f);
+
+        // Checa a distância antes de aplicar dano
+        if(player != null && Vector2.Distance(transform.position, player.position) <= attackRange)
         {
-            player_Life.TakeDamage(damage); // Aplica dano ao jogador (dano fixo de 10, você pode modificar isso para ser variável)
+            Player_Life player_Life = player.GetComponent<Player_Life>();
+            if(player_Life != null)
+                player_Life.TakeDamage(damage);
         }
 
-        yield return new WaitForSeconds(attackCD); // Espera o cooldown do ataque
+        // Espera o cooldown antes de permitir novo ataque
+        yield return new WaitForSeconds(attackCD);
 
-        enemyBase.ResumeMovement(); // Retoma o movimento do inimigo (método a ser implementado no EnemyBase)
-        isAttacking = false; // Permite que o inimigo ataque novamente
-    }
+        enemyBase.ResumeMovement();
+        isAttacking = false;
+        }
 
     void OnDrawGizmos()
     {

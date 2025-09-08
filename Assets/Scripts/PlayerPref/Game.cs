@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     public void ToMenu()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
