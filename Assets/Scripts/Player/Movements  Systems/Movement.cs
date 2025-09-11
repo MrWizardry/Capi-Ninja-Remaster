@@ -81,7 +81,7 @@ public class Movement : MonoBehaviour
 
             if (currentSpeed > 0f)
             {
-                currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime / decelerationTime);
+                currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
                 if (currentSpeed < 1f)
                     currentSpeed = 0f;
             }
@@ -145,11 +145,11 @@ public class Movement : MonoBehaviour
         #endregion
 
         #region Pixel Velocity
-            float velocityUnitys = rb.velocity.magnitude;
-            float pixelsPerUnity = 100f;
-            float velocityPixels = velocityUnitys * pixelsPerUnity;
+        /*float velocityUnitys = rb.velocity.magnitude;
+        float pixelsPerUnity = 100f;
+        float velocityPixels = velocityUnitys * pixelsPerUnity;
 
-            Debug.Log($"Velocidade em UU/s: {velocityUnitys} | Velocidade em Pixels/s: {velocityPixels}");
+        Debug.Log($"Velocidade em UU/s: {velocityUnitys} | Velocidade em Pixels/s: {velocityPixels}");*/
         #endregion
     }
 

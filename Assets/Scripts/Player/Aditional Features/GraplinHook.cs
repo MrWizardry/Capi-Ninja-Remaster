@@ -45,7 +45,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 // aplicar momentum apenas se soltar rápido
                 Vector2 direction = (grapplePoint - rb.position).normalized;
-                rb.velocity += direction * momentumForce;
+                GetComponent<Momentum>().AddMomentum(direction, momentumForce);
             }
 
             ResetGrapple();
@@ -78,13 +78,15 @@ public class GrapplingHook : MonoBehaviour
 
             // Assuming you have a Movement component attached to the same GameObject
             float currentSpeed = GetComponent<Movement>().currentSpeed;
-            if(currentSpeed != 0)
+            if (currentSpeed != 0)
                 rb.velocity = currentSpeed * (direction * pullSpeed);
             else
                 rb.velocity = direction * (pullSpeed * pullForceUP);    // Move o Rigidbody na direção do ponto de grappling
             //direction * pullSpeed 
             if (distance < 0.5f)
             {
+                direction = (grapplePoint - rb.position).normalized;
+                GetComponent<Momentum>().AddMomentum(direction, momentumForce * 0.5f);
                 ResetGrapple(); // Chegou ao ponto
             }
         }
