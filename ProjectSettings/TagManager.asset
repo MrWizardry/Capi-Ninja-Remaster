@@ -6,6 +6,7 @@ TagManager:
   tags:
   - boss
   - enemy
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Platform
   - boss
   - Intangivel
-  - 
+  - Fire
   - 
   - 
   - 

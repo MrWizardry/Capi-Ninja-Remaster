@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
@@ -11,11 +10,16 @@ public class GrapplingHook : MonoBehaviour
     [SerializeField] private float pullSpeed = 10f;
     [SerializeField] private float momentumForce = 15f;
     [SerializeField] private float pullForceUP = 5f;
+    [SerializeField] private float grappleCooldown = 0.5f;
 
+    [Header("Status (Read Only)")]
     [SerializeField] private Vector2 grapplePoint;
+    [SerializeField] private bool isOnCooldown = false;
+
     private Rigidbody2D rb;
     private bool isPulling = false;
     private bool isHooked = false;
+    private bool canGrapple = true;
 
     private Camera mainCamera;
     private float maxDistanceUnits => maxDistancePixels / 100f;
@@ -29,7 +33,7 @@ public class GrapplingHook : MonoBehaviour
 
     void Update()
     {
-        if (Custom_Input.GetKeyDown("Grapple"))
+        if (Custom_Input.GetKeyDown("Grapple") && canGrapple)
         {
             TryGrapple();
         }
@@ -43,7 +47,6 @@ public class GrapplingHook : MonoBehaviour
         {
             if (!isPulling && isHooked)
             {
-                // aplicar momentum apenas se soltar rápido
                 Vector2 direction = (grapplePoint - rb.position).normalized;
                 GetComponent<Momentum>().AddMomentum(direction, momentumForce);
             }
@@ -55,7 +58,8 @@ public class GrapplingHook : MonoBehaviour
         {
             DrawLine();
         }
-        if ((Vector2)transform.position == grapplePoint) // Reset position if below a certain point
+
+        if ((Vector2)transform.position == grapplePoint)
         {
             ResetGrapple();
         }
@@ -68,26 +72,24 @@ public class GrapplingHook : MonoBehaviour
             Vector2 direction = (grapplePoint - rb.position).normalized;
             float distance = Vector2.Distance(rb.position, grapplePoint);
 
-            // Verifica colisão no caminho
             RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, distance, grappleLayer);
             if (hit.collider != null && Vector2.Distance(hit.point, grapplePoint) > 0.1f)
             {
-                ResetGrapple(); // Colidiu com algo no meio, cancela
+                ResetGrapple();
                 return;
             }
 
-            // Assuming you have a Movement component attached to the same GameObject
             float currentSpeed = GetComponent<Movement>().currentSpeed;
             if (currentSpeed != 0)
                 rb.velocity = currentSpeed * (direction * pullSpeed);
             else
-                rb.velocity = direction * (pullSpeed * pullForceUP);    // Move o Rigidbody na direção do ponto de grappling
-            //direction * pullSpeed 
+                rb.velocity = direction * (pullSpeed * pullForceUP);
+
             if (distance < 0.5f)
             {
                 direction = (grapplePoint - rb.position).normalized;
                 GetComponent<Momentum>().AddMomentum(direction, momentumForce * 0.5f);
-                ResetGrapple(); // Chegou ao ponto
+                ResetGrapple();
             }
         }
     }
@@ -106,24 +108,33 @@ public class GrapplingHook : MonoBehaviour
             isHooked = true;
             lineRenderer.positionCount = 2;
 
-            // --- NOVO SISTEMA DE IMPULSO ---
             Movement movement = GetComponent<Movement>();
-            float inputDir = Mathf.Sign(direction.x); // Direção do grapple (esquerda -1 / direita +1)
-            float moveDir = Mathf.Sign(movement.rb.velocity.x); // Direção atual do player
+            float inputDir = Mathf.Sign(direction.x);
+            float moveDir = Mathf.Sign(movement.rb.velocity.x);
 
             if (moveDir == inputDir && Mathf.Abs(movement.currentSpeed) > 0.1f)
             {
-                // Se a direção for a mesma, soma velocidade (impulso extra)
                 rb.velocity += direction * movement.currentSpeed;
             }
             else
             {
-                // Se a direção for contrária, zera a velocidade e "vira"
                 rb.velocity = Vector2.zero;
                 movement.currentSpeed = 0f;
-                movement.animManager.SetDirection(inputDir); // Faz o personagem virar
+                movement.animManager.SetDirection(inputDir);
             }
+
+            // Inicia cooldown ao usar o gancho
+            StartCoroutine(StartGrappleCooldown());
         }
+    }
+
+    IEnumerator StartGrappleCooldown()
+    {
+        canGrapple = false;
+        isOnCooldown = true;
+        yield return new WaitForSeconds(grappleCooldown);
+        canGrapple = true;
+        isOnCooldown = false;
     }
 
     void ResetGrapple()
@@ -142,5 +153,10 @@ public class GrapplingHook : MonoBehaviour
     public bool IsPulling()
     {
         return isPulling;
+    }
+
+    public bool IsOnCooldown()
+    {
+        return isOnCooldown;
     }
 }

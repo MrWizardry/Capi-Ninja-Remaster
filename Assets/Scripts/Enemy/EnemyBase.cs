@@ -95,7 +95,6 @@ public class EnemyBase : MonoBehaviour
         }
         animManager.Play("Walk");
         rb.velocity = new Vector2(direction * patrolSpeed, rb.velocity.y);
-        Debug.Log("Patrulha");
     }
 
     private void Flip()
@@ -116,10 +115,6 @@ public class EnemyBase : MonoBehaviour
     {
         DrawVisionCone();
     }
-    /*else
-    {
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // fallback
-    }*/
 
     // Raycasts de chão e parede
     if (Application.isPlaying)

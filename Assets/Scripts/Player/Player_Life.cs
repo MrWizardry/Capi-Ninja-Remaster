@@ -9,14 +9,22 @@ public class Player_Life : MonoBehaviour
     public int playerdamage = 10;
     public int maxHealth = 100; // Vida máxima do jogador
     private int currentHealth; // Vida atual do jogador
+    private PlayerIntagibility playerIntangibility;
 
     void Start()
     {
-        currentHealth = maxHealth; // Inicializa a vida atual com a vida máxima
+        currentHealth = maxHealth; // Inicializa a vida atual com a vida máxima]
+        playerIntangibility = GetComponent<PlayerIntagibility>();
     }
 
     public void TakeDamage(int damage)
     {
+        if (playerIntangibility != null && playerIntangibility.IsIntangible)
+        {
+            Debug.Log("Jogador está intangível, não levou dano!");
+            return;
+        }
+
         currentHealth -= damage; // Reduz a vida atual pelo dano recebido
         Debug.Log("Jogador tomou dano: " + damage + " | Vida atual: " + currentHealth);
         

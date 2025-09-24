@@ -1,28 +1,80 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerIntagibility : MonoBehaviour
 {
-    [SerializeField] private Collider2D playerCollider;
-[SerializeField] private LayerMask intangivelMask; // objetos que ele pode atravessar
+    [Header("Intangibilidade")]
+    public float intangibleDuration = 3f; // quanto tempo fica intangível
+    public float cooldownDuration = 5f;   // tempo de recarga após acabar
 
-private LayerMask defaultLayer;
+    public KeyCode intangibleKey = KeyCode.I;
+
+    public bool IsIntangible { get; private set; } = false;
+    public bool IsOnCooldown { get; private set; } = false;
+
+    private int playerLayer;
+    private int intangibleLayer;
+
+    void Start()
+    {
+        playerLayer = gameObject.layer;
+        intangibleLayer = LayerMask.NameToLayer("Intangivel");
+        Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, false);
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(intangibleKey) && !IsIntangible && !IsOnCooldown)
         {
-            gameObject.layer = LayerMask.NameToLayer("Intangivel");
-            StartCoroutine(DesativarIntangibilidade(10f));
-            Debug.Log("Intangivel");
+            StartCoroutine(IntangibleRoutine());
+        }
+        else if (Input.GetKeyDown(intangibleKey) && IsOnCooldown)
+        {
+            Debug.Log("Intangibilidade ainda em recarga!");
         }
     }
 
-    private IEnumerator DesativarIntangibilidade(float duracao)
+    private IEnumerator IntangibleRoutine()
     {
-        yield return new WaitForSeconds(duracao);
-        gameObject.layer = LayerMask.NameToLayer("playerLayer");
+        IsIntangible = true;
+        Debug.Log("Jogador ficou intangível!");
+
+        // Ignora colisão do jogador com a layer "Intangivel"
+        Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, true);
+
+        yield return new WaitForSeconds(intangibleDuration);
+
+        IsIntangible = false;
+        Debug.Log("Jogador voltou ao normal!");
+
+        // Reativa a colisão com a layer "Intangivel"
+        Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, false);
+
+        // Inicia cooldown
+        StartCoroutine(CooldownRoutine());
     }
 
+    private IEnumerator CooldownRoutine()
+    {
+        IsOnCooldown = true;
+        Debug.Log("Intangibilidade em recarga...");
+
+        yield return new WaitForSeconds(cooldownDuration);
+
+        IsOnCooldown = false;
+        Debug.Log("Intangibilidade pronta para uso novamente!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Se encostar em algo com a tag Fire enquanto está intangível
+        if (IsIntangible && other.CompareTag("Fire"))
+        {
+            FireEnemy fire = other.GetComponent<FireEnemy>();
+            if (fire != null)
+            {
+                fire.DisableFireParent();
+            }
+        }
+    }
 }
