@@ -10,7 +10,7 @@ public class Player_Damage_Ranged : MonoBehaviour
     public LayerMask enemy;
     public float maxRangeDistance = 5f;  
     private bool attacking;
-    public int damage = 20; // Dano fixo de 20, você pode modificar isso para ser variável
+    public int damage = 20; 
 
     private Vector2 screenPosition;
     private Vector2 worldPosition;
