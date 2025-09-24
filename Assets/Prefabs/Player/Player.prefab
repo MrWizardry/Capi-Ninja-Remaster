@@ -180,7 +180,7 @@ MonoBehaviour:
   wallCheckDistance: 0.4
   wallSlideSpeed: 5
   wallStickTime: 2
-  wallJumpForceX: 12
+  wallJumpForceX: 14
   wallJumpForceY: 14
   wallJumpControlTime: 0.2
   isTouchingWall: 0
@@ -259,7 +259,8 @@ MonoBehaviour:
   maxDistancePixels: 560
   pullSpeed: 2
   momentumForce: 15
-  grapplePoint: {x: 0, y: 0}
+  pullForceUP: 5
+  grapplePoint: {x: 0.387, y: 0.389}
 --- !u!120 &5762776455929904854
 LineRenderer:
   serializedVersion: 2

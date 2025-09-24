@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     // --- MOVIMENTO ---
     [Header("Andar")]
     private float inputDirection = 0f;
-    private float moveDirection = 0f;
+    public float moveDirection = 0f;
     [SerializeField] private float walk = 6f; // Velocidade do player
     [SerializeField] private float running = 8f;
     [SerializeField] private float MaxSpeed = 20f;
@@ -66,28 +66,57 @@ public class Movement : MonoBehaviour
         else
             inputDirection = 0f;
 
-        if (inputDirection != 0)
+        if(IsGrounded())
         {
-            accelerationTimer += Time.deltaTime;
-            currentSpeed = Mathf.Lerp(0f, running, accelerationTimer / accelerationTime);
-            currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+            if (inputDirection != 0)
+            {
+                accelerationTimer += Time.deltaTime;
+                currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
+                currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
 
-            // Drift na troca de direção
-            moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, driftSpeed * Time.deltaTime);
+                // Drift na troca de direção
+                moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, driftSpeed * Time.deltaTime);
+            }
+            else
+            {
+                accelerationTimer = 0f;
+
+                if (currentSpeed > 0f)
+                {
+                    currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
+                    if (currentSpeed < 1f)
+                        currentSpeed = 0f;
+                }
+
+                // Drift de desaceleração (escorrega ao parar)
+                moveDirection = Mathf.MoveTowards(moveDirection, 0f, driftSpeed * Time.deltaTime);
+            }
         }
         else
         {
-            accelerationTimer = 0f;
-
-            if (currentSpeed > 0f)
+            if (inputDirection != 0)
             {
-                currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
-                if (currentSpeed < 1f)
-                    currentSpeed = 0f;
-            }
+                accelerationTimer += Time.deltaTime;
+                currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
+                currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
 
-            // Drift de desaceleração (escorrega ao parar)
-            moveDirection = Mathf.MoveTowards(moveDirection, 0f, driftSpeed * Time.deltaTime);
+                // Drift na troca de direção
+                moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, (driftSpeed * 0.25f) * Time.deltaTime);
+            }
+            else
+            {
+                accelerationTimer = 0f;
+
+                if (currentSpeed > 0f)
+                {
+                    currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
+                    if (currentSpeed < 1f)
+                        currentSpeed = 0f;
+                }
+
+                // Drift de desaceleração (escorrega ao parar)
+                moveDirection = Mathf.MoveTowards(moveDirection, 0f, (driftSpeed * 0.25f) * Time.deltaTime);
+            }
         }
         #endregion
 
@@ -165,7 +194,10 @@ public class Movement : MonoBehaviour
 
         rb.velocity = new Vector2(clampedX, clampedY);
     }
-
+    public void SetDirection(int value)
+    {
+        moveDirection = value;
+    }
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
