@@ -20,6 +20,7 @@ public class GrapplingHook : MonoBehaviour
     private bool isPulling = false;
     private bool isHooked = false;
     private bool canGrapple = true;
+    private Momentum momentum;
 
     private Camera mainCamera;
     private float maxDistanceUnits => maxDistancePixels / 100f;
@@ -27,6 +28,7 @@ public class GrapplingHook : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        momentum = GetComponent<Momentum>();
         mainCamera = Camera.main;
         lineRenderer.positionCount = 0;
     }
@@ -48,7 +50,7 @@ public class GrapplingHook : MonoBehaviour
             if (!isPulling && isHooked)
             {
                 Vector2 direction = (grapplePoint - rb.position).normalized;
-                GetComponent<Momentum>().AddMomentum(direction, momentumForce);
+                momentum.AddMomentum(direction, momentumForce);
             }
 
             ResetGrapple();

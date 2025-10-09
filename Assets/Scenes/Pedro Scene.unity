@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: grappleCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4626785093328879776, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: grappleLayer.m_Bits
+      value: 4104
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
