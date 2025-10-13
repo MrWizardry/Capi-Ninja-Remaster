@@ -16,7 +16,7 @@ public class FireEnemy : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Life>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!fireActive) return;
 
