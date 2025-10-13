@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -165,12 +166,12 @@ public class Movement : MonoBehaviour
         {
             if (rb.velocity == Vector2.zero && IsGrounded() == true)
                 animManager.PlayActionAnimation("Idle");
-            else if (rb.velocityX != 0 && rb.velocityY == 0)
+            else if (rb.velocityX != 0 && rb.velocityY == 0 && !wallSlide.isWallSliding) 
                 animManager.PlayActionAnimation("Run");
         }
 
-        if (inputDirection != 0)
-            animManager.SetDirection(inputDirection);
+        if (moveDirection != 0)
+            animManager.SetDirection(moveDirection);
         #endregion
 
         #region Pixel Velocity

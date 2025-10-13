@@ -272,7 +272,7 @@ BlendTree:
   m_Name: Wall_Slide_Direction
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b35fc919dac7c464585a67813db64287, type: 2}
+    m_Motion: {fileID: 7400000, guid: ae238f59cfaa32444b18f5c7ad4eb568, type: 2}
     m_Threshold: -0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -280,14 +280,14 @@ BlendTree:
     m_DirectBlendParameter: Direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ae238f59cfaa32444b18f5c7ad4eb568, type: 2}
+    m_Motion: {fileID: 7400000, guid: b35fc919dac7c464585a67813db64287, type: 2}
     m_Threshold: 0.1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Direction
     m_Mirror: 0
-  m_BlendParameter: Wall Direction
+  m_BlendParameter: Direction
   m_BlendParameterY: Direction
   m_MinThreshold: -0.1
   m_MaxThreshold: 0.1
@@ -773,7 +773,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Slide
-  m_Speed: 1
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player_Damage_Ranged : MonoBehaviour
@@ -15,6 +16,14 @@ public class Player_Damage_Ranged : MonoBehaviour
     private Vector2 screenPosition;
     private Vector2 worldPosition;
 
+    private AnimationManager animManager;
+    [SerializeField] private float timeSinceLastAtk;
+    [SerializeField] private float timeBetweenAtk;
+
+    void Start()
+    {
+        animManager = GetComponent<AnimationManager>();
+    }
     void Update()
     {
         screenPosition = Input.mousePosition;
@@ -31,11 +40,13 @@ public class Player_Damage_Ranged : MonoBehaviour
 
         damagePointer.position = moveableRange.transform.position;
 
+        timeSinceLastAtk += Time.deltaTime;
         attacking = Custom_Input.GetKeyDown("Attack");
-        if (attacking)
+        if (attacking && timeSinceLastAtk >= timeBetweenAtk)
         {
-            Attack();
-            Debug.Log("Ataque");
+            animManager.PlayHighPriority("Attack");
+        
+            timeSinceLastAtk = 0;
         }
     }
 
@@ -46,9 +57,16 @@ public class Player_Damage_Ranged : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyLife>().TakeDamage(damage);
+            timeSinceLastAtk = timeBetweenAtk;
+            StartCoroutine(AttackEffect());
         }
     }
-
+    private IEnumerator AttackEffect()
+    {
+        animManager.StartDash();
+        yield return new WaitForSeconds(0.1f);
+        animManager.EndDash();
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(damagePointer.position, damageRange);

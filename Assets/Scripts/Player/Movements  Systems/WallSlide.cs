@@ -59,11 +59,11 @@ public class WallSlide : MonoBehaviour
 
             if (wallStickCounter > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                rb.velocity = new Vector2(rb.velocity.x, -(wallSlideSpeed * 2));
             }
 
             animManager.PlayActionAnimation("Wall_Slide");
