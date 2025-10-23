@@ -12,8 +12,10 @@ public class FadeManager : MonoBehaviour
     public Image fadeImage;
     public float fadeSpeed = 1f;
 
+    [Header("Referências")]
     public Scene_Chnager scene_Chnager;
     public NewGame_System newGameSystem;
+    public Movement playerMovement; // 👈 adiciona referência ao script de movimento
 
     public enum FadeType
     {
@@ -25,6 +27,7 @@ public class FadeManager : MonoBehaviour
     void Awake()
     {
         StartCoroutine(FadeIn());
+        playerMovement.enabled = false; 
     }
 
     public void StartFadeOut()
@@ -32,11 +35,13 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(FadeOutByType());
         Time.timeScale = 1f;
     }
+
     public void FadeToNew()
     {
         fadeType = FadeType.NewGame;
         StartFadeOut();
     }
+
     public void FadeToContinue()
     {
         fadeType = FadeType.Continue;
@@ -60,6 +65,12 @@ public class FadeManager : MonoBehaviour
 
         fadeImage.color = new Color(color.r, color.g, color.b, 0f);
         fadeImage.gameObject.SetActive(false);
+
+        // ✅ Libera a movimentação do player após o fade
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = true;
+        }
     }
     #endregion
 
@@ -80,15 +91,11 @@ public class FadeManager : MonoBehaviour
 
         fadeImage.color = new Color(color.r, color.g, color.b, 1f);
 
-        // Decide o que acontece após o fade
         switch (fadeType)
         {
-
             case FadeType.InGame:
                 if (scene_Chnager != null)
-                {
                     scene_Chnager.LoadScene(0);
-                }
                 else
                     Debug.LogWarning("Scene_Chnager não foi atribuído!");
                 break;
