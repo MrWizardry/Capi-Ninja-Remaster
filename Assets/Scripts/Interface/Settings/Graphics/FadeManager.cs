@@ -15,7 +15,6 @@ public class FadeManager : MonoBehaviour
     [Header("Referências")]
     public Scene_Chnager scene_Chnager;
     public NewGame_System newGameSystem;
-    public Movement playerMovement; // 👈 adiciona referência ao script de movimento
 
     public enum FadeType
     {
@@ -27,7 +26,6 @@ public class FadeManager : MonoBehaviour
     void Awake()
     {
         StartCoroutine(FadeIn());
-        playerMovement.enabled = false; 
     }
 
     public void StartFadeOut()
@@ -65,15 +63,8 @@ public class FadeManager : MonoBehaviour
 
         fadeImage.color = new Color(color.r, color.g, color.b, 0f);
         fadeImage.gameObject.SetActive(false);
-
-        // ✅ Libera a movimentação do player após o fade
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = true;
-        }
     }
     #endregion
-
     #region FadeOut By Type
     private IEnumerator FadeOutByType()
     {

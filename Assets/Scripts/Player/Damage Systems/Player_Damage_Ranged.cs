@@ -26,27 +26,30 @@ public class Player_Damage_Ranged : MonoBehaviour
     }
     void Update()
     {
-        screenPosition = Input.mousePosition;
-        worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-
-        Vector2 direction = worldPosition - (Vector2)transform.position;
-        
-        if (direction.magnitude > maxRangeDistance)
+        if(Game.Instance.isReceivingInputs())
         {
-            direction = direction.normalized * maxRangeDistance;
-        }
+            screenPosition = Input.mousePosition;
+            worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
-        moveableRange.transform.position = (Vector2)transform.position + direction;
+            Vector2 direction = worldPosition - (Vector2)transform.position;
 
-        damagePointer.position = moveableRange.transform.position;
+            if (direction.magnitude > maxRangeDistance)
+            {
+                direction = direction.normalized * maxRangeDistance;
+            }
 
-        timeSinceLastAtk += Time.deltaTime;
-        attacking = Custom_Input.GetKeyDown("Attack");
-        if (attacking && timeSinceLastAtk >= timeBetweenAtk)
-        {
-            animManager.PlayHighPriority("Attack");
-        
-            timeSinceLastAtk = 0;
+            moveableRange.transform.position = (Vector2)transform.position + direction;
+
+            damagePointer.position = moveableRange.transform.position;
+
+            timeSinceLastAtk += Time.deltaTime;
+            attacking = Custom_Input.GetKeyDown("Attack");
+            if (attacking && timeSinceLastAtk >= timeBetweenAtk)
+            {
+                animManager.PlayHighPriority("Attack");
+
+                timeSinceLastAtk = 0;
+            }
         }
     }
 

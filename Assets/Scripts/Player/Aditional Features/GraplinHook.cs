@@ -35,35 +35,38 @@ public class GrapplingHook : MonoBehaviour
 
     void Update()
     {
-        if (Custom_Input.GetKeyDown("Grapple") && canGrapple)
+        if (Game.Instance.isReceivingInputs())
         {
-            TryGrapple();
-        }
-
-        if (Custom_Input.GetKey("Grapple") && isHooked)
-        {
-            isPulling = true;
-        }
-
-        if (Custom_Input.GetKeyUp("Grapple"))
-        {
-            if (!isPulling && isHooked)
+            if (Custom_Input.GetKeyDown("Grapple") && canGrapple)
             {
-                Vector2 direction = (grapplePoint - rb.position).normalized;
-                momentum.AddMomentum(direction, momentumForce);
+                TryGrapple();
             }
 
-            ResetGrapple();
-        }
+            if (Custom_Input.GetKey("Grapple") && isHooked)
+            {
+                isPulling = true;
+            }
 
-        if (isHooked)
-        {
-            DrawLine();
-        }
+            if (Custom_Input.GetKeyUp("Grapple"))
+            {
+                if (!isPulling && isHooked)
+                {
+                    Vector2 direction = (grapplePoint - rb.position).normalized;
+                    momentum.AddMomentum(direction, momentumForce);
+                }
 
-        if ((Vector2)transform.position == grapplePoint)
-        {
-            ResetGrapple();
+                ResetGrapple();
+            }
+
+            if (isHooked)
+            {
+                DrawLine();
+            }
+
+            if ((Vector2)transform.position == grapplePoint)
+            {
+                ResetGrapple();
+            }
         }
     }
 

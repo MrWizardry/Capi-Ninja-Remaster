@@ -77,7 +77,7 @@ public class WallSlide : MonoBehaviour
             moveCtrl.SetDirection(jumpDirection);
 
 
-            rb.AddForce(new Vector2(jumpDirection * wallJumpForceY, wallJumpForceY), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(jumpDirection * wallJumpForceX, wallJumpForceY), ForceMode2D.Impulse);
             //overrideHorizontal = true;
             //overrideTimer = wallJumpControlTime;
             //overrideVelocityX = jumpForceX;

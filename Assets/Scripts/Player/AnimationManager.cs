@@ -54,6 +54,8 @@ public class AnimationManager : MonoBehaviour
             chromAb.intensity.Override(0);
         }
         else Debug.LogWarning("Post Process Volume not found!");
+
+        PlayAnimation("Game Start");
     }
     void Update()
     {
@@ -110,6 +112,14 @@ public class AnimationManager : MonoBehaviour
     public float ReturnDirection()
     {
         return animDirection;
+    }
+    private void StopInputs()
+    {
+        Game.Instance.CanNotReceiveInputsNow();
+    }
+    private void StartInputs()
+    {
+        Game.Instance.CanReceiveInputsNow();
     }
 }
 

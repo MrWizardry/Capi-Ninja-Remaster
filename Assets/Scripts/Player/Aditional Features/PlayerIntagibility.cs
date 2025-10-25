@@ -24,13 +24,16 @@ public class PlayerIntagibility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(intangibleKey) && !IsIntangible && !IsOnCooldown)
+        if(Game.Instance.isReceivingInputs())
         {
-            StartCoroutine(IntangibleRoutine());
-        }
-        else if (Input.GetKeyDown(intangibleKey) && IsOnCooldown)
-        {
-            Debug.Log("Intangibilidade ainda em recarga!");
+            if (Input.GetKeyDown(intangibleKey) && !IsIntangible && !IsOnCooldown)
+            {
+                StartCoroutine(IntangibleRoutine());
+            }
+            else if (Input.GetKeyDown(intangibleKey) && IsOnCooldown)
+            {
+                Debug.Log("Intangibilidade ainda em recarga!");
+            }
         }
     }
 

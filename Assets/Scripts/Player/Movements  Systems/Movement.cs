@@ -59,119 +59,125 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        #region Movement
-        if (Custom_Input.GetKey("Right"))
-            inputDirection = 1f;
-        else if (Custom_Input.GetKey("Left"))
-            inputDirection = -1f;
-        else
-            inputDirection = 0f;
-
-        if(IsGrounded())
+        #region Input Reading
+        if(Game.Instance.isReceivingInputs())
         {
-            if (inputDirection != 0)
-            {
-                accelerationTimer += Time.deltaTime;
-                currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
-                currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+            #region Movement
+            if (Custom_Input.GetKey("Right"))
+                inputDirection = 1f;
+            else if (Custom_Input.GetKey("Left"))
+                inputDirection = -1f;
+            else
+                inputDirection = 0f;
 
-                // Drift na troca de direção
-                moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, driftSpeed * Time.deltaTime);
+            if (IsGrounded())
+            {
+                if (inputDirection != 0)
+                {
+                    accelerationTimer += Time.deltaTime;
+                    currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
+                    currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+
+                    // Drift na troca de direção
+                    moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, driftSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    accelerationTimer = 0f;
+
+                    if (currentSpeed > 0f)
+                    {
+                        currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
+                        if (currentSpeed < 1f)
+                            currentSpeed = 0f;
+                    }
+
+                    // Drift de desaceleração (escorrega ao parar)
+                    moveDirection = Mathf.MoveTowards(moveDirection, 0f, driftSpeed * Time.deltaTime);
+                }
             }
             else
             {
-                accelerationTimer = 0f;
-
-                if (currentSpeed > 0f)
+                if (inputDirection != 0)
                 {
-                    currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
-                    if (currentSpeed < 1f)
-                        currentSpeed = 0f;
+                    accelerationTimer += Time.deltaTime;
+                    currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
+                    currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+
+                    // Drift na troca de direção
+                    moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, (driftSpeed * 0.25f) * Time.deltaTime);
                 }
+                else
+                {
+                    accelerationTimer = 0f;
 
-                // Drift de desaceleração (escorrega ao parar)
-                moveDirection = Mathf.MoveTowards(moveDirection, 0f, driftSpeed * Time.deltaTime);
+                    if (currentSpeed > 0f)
+                    {
+                        currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
+                        if (currentSpeed < 1f)
+                            currentSpeed = 0f;
+                    }
+
+                    // Drift de desaceleração (escorrega ao parar)
+                    moveDirection = Mathf.MoveTowards(moveDirection, 0f, (driftSpeed * 0.25f) * Time.deltaTime);
+                }
             }
-        }
-        else
-        {
-            if (inputDirection != 0)
-            {
-                accelerationTimer += Time.deltaTime;
-                currentSpeed = Mathf.Lerp(currentSpeed, running, accelerationTimer / accelerationTime);
-                currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
+            #endregion
 
-                // Drift na troca de direção
-                moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, (driftSpeed * 0.25f) * Time.deltaTime);
+            #region Jump Functions
+            if (IsGrounded())
+            {
+                coyoteTimecount = coyoteTime;
+                isJumping = false;
+            }
+            else
+                coyoteTimecount -= Time.deltaTime;
+
+            if (jumpCooldownTimer > 0f)
+                jumpCooldownTimer -= Time.deltaTime;
+
+            if (Input.GetButtonDown("Jump"))
+                jumpbuffercount = jumpbuffer;
+            else
+                jumpbuffercount -= Time.deltaTime;
+
+            if (jumpbuffercount > 0f && coyoteTimecount > 0f && jumpCooldownTimer <= 0f)
+            {
+                isJumping = true;
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                jumpbuffercount = 0f;
+                jumpCooldownTimer = jumpCoolDown;
+
+                if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
+                else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
+            }
+
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                coyoteTimecount = 0f;
+            }
+            #endregion
+
+            #region Animation
+            if ((isJumping || !IsGrounded()) && !wallSlide.isWallSliding)
+            {
+                if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
+                else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Middle");
             }
             else
             {
-                accelerationTimer = 0f;
-
-                if (currentSpeed > 0f)
-                {
-                    currentSpeed = Mathf.Lerp(currentSpeed, 0f, Time.deltaTime);
-                    if (currentSpeed < 1f)
-                        currentSpeed = 0f;
-                }
-
-                // Drift de desaceleração (escorrega ao parar)
-                moveDirection = Mathf.MoveTowards(moveDirection, 0f, (driftSpeed * 0.25f) * Time.deltaTime);
+                if (rb.velocity == Vector2.zero && IsGrounded() == true)
+                    animManager.PlayActionAnimation("Idle");
+                else if (rb.velocityX != 0 && rb.velocityY == 0 && !wallSlide.isWallSliding)
+                    animManager.PlayActionAnimation("Run");
             }
+
+            if (moveDirection != 0)
+                animManager.SetDirection(moveDirection);
         }
         #endregion
 
-        #region Jump Functions
-        if (IsGrounded())
-        {
-            coyoteTimecount = coyoteTime;
-            isJumping = false;
-        }
-        else
-            coyoteTimecount -= Time.deltaTime;
-
-        if (jumpCooldownTimer > 0f)
-            jumpCooldownTimer -= Time.deltaTime;
-
-        if (Input.GetButtonDown("Jump"))
-            jumpbuffercount = jumpbuffer;
-        else
-            jumpbuffercount -= Time.deltaTime;
-
-        if (jumpbuffercount > 0f && coyoteTimecount > 0f && jumpCooldownTimer <= 0f)
-        {
-            isJumping = true;
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            jumpbuffercount = 0f;
-            jumpCooldownTimer = jumpCoolDown;
-
-            if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
-            else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            coyoteTimecount = 0f;
-        }
-        #endregion
-
-        #region Animation
-        if ((isJumping || !IsGrounded()) && !wallSlide.isWallSliding)
-        {
-            if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
-            else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Middle");
-        }
-        else
-        {
-            if (rb.velocity == Vector2.zero && IsGrounded() == true)
-                animManager.PlayActionAnimation("Idle");
-            else if (rb.velocityX != 0 && rb.velocityY == 0 && !wallSlide.isWallSliding) 
-                animManager.PlayActionAnimation("Run");
-        }
-
-        if (moveDirection != 0)
-            animManager.SetDirection(moveDirection);
         #endregion
 
         #region Pixel Velocity
