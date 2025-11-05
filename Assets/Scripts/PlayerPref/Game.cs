@@ -34,6 +34,10 @@ public class Game : MonoBehaviour
 
         SceneManager.LoadScene(0); // volta pro menu
     }
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public bool isReceivingInputs()
     {
         return canReceiveInputs;

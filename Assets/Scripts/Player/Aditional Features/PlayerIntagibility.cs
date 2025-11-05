@@ -15,11 +15,15 @@ public class PlayerIntagibility : MonoBehaviour
     private int playerLayer;
     private int intangibleLayer;
 
+    private AnimationManager animManager;
+
     void Start()
     {
         playerLayer = gameObject.layer;
         intangibleLayer = LayerMask.NameToLayer("Intangivel");
         Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, false);
+
+        animManager = GetComponent<AnimationManager>();
     }
 
     void Update()
@@ -28,7 +32,9 @@ public class PlayerIntagibility : MonoBehaviour
         {
             if (Input.GetKeyDown(intangibleKey) && !IsIntangible && !IsOnCooldown)
             {
-                StartCoroutine(IntangibleRoutine());
+                //StartCoroutine(IntangibleRoutine());
+
+                animManager.PlayHighPriority("WaterMode");
             }
             else if (Input.GetKeyDown(intangibleKey) && IsOnCooldown)
             {
@@ -47,6 +53,26 @@ public class PlayerIntagibility : MonoBehaviour
 
         yield return new WaitForSeconds(intangibleDuration);
 
+        IsIntangible = false;
+        Debug.Log("Jogador voltou ao normal!");
+
+        // Reativa a colisão com a layer "Intangivel"
+        Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, false);
+
+        // Inicia cooldown
+        StartCoroutine(CooldownRoutine());
+    }
+
+    private void StartIntangible()
+    {
+        IsIntangible = true;
+        Debug.Log("Jogador ficou intangível!");
+
+        // Ignora colisão do jogador com a layer "Intangivel"
+        Physics2D.IgnoreLayerCollision(playerLayer, intangibleLayer, true);
+    }
+    private void EndIntangible()
+    {
         IsIntangible = false;
         Debug.Log("Jogador voltou ao normal!");
 
