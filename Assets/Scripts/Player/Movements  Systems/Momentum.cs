@@ -26,7 +26,7 @@ public class Momentum : MonoBehaviour
     {
         if (momentum != Vector2.zero)
         {
-            rb.velocity += momentum * Time.fixedDeltaTime;
+            rb.linearVelocity += momentum * Time.fixedDeltaTime;
         }
     }
 

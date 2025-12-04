@@ -86,9 +86,9 @@ public class GrapplingHook : MonoBehaviour
 
             float currentSpeed = GetComponent<Movement>().currentSpeed;
             if (currentSpeed != 0)
-                rb.velocity = currentSpeed * (direction * pullSpeed);
+                rb.linearVelocity = currentSpeed * (direction * pullSpeed);
             else
-                rb.velocity = direction * (pullSpeed * pullForceUP);
+                rb.linearVelocity = direction * (pullSpeed * pullForceUP);
 
             if (distance < 0.5f)
             {
@@ -115,15 +115,15 @@ public class GrapplingHook : MonoBehaviour
 
             Movement movement = GetComponent<Movement>();
             float inputDir = Mathf.Sign(direction.x);
-            float moveDir = Mathf.Sign(movement.rb.velocity.x);
+            float moveDir = Mathf.Sign(movement.rb.linearVelocity.x);
 
             if (moveDir == inputDir && Mathf.Abs(movement.currentSpeed) > 0.1f)
             {
-                rb.velocity += direction * movement.currentSpeed;
+                rb.linearVelocity += direction * movement.currentSpeed;
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
                 movement.currentSpeed = 0f;
                 movement.animManager.SetDirection(inputDir);
             }

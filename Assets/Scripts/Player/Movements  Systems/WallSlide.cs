@@ -59,11 +59,11 @@ public class WallSlide : MonoBehaviour
 
             if (wallStickCounter > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, -(wallSlideSpeed * 2));
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -(wallSlideSpeed * 2));
             }
 
             animManager.PlayActionAnimation("Wall_Slide");
@@ -93,7 +93,7 @@ public class WallSlide : MonoBehaviour
             moveCtrl.SetDirection(jumpDirection);
 
 
-            rb.AddForce(new Vector2(jumpDirection * wallJumpForceY, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(jumpDirection * wallJumpForceX, 0), ForceMode2D.Impulse);
             //overrideHorizontal = true;
             //overrideTimer = wallJumpControlTime;
             //overrideVelocityX = jumpForceX;
@@ -132,7 +132,7 @@ public class WallSlide : MonoBehaviour
 
         isTouchingWall = hitRight.collider != null || hitLeft.collider != null;
 
-        if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
+        if (isTouchingWall && !IsGrounded() && rb.linearVelocity.y <= 0)
         {
             if (!isWallSliding)
             {
@@ -162,6 +162,7 @@ public class WallSlide : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * wallCheckDistance);
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * wallCheckDistance);
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
         }
     }
 }

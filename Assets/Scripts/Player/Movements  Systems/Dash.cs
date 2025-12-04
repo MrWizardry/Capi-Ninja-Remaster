@@ -51,7 +51,7 @@ public class Dash : MonoBehaviour
     {
             if (isDashing)
             return;
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
     }
     
 
@@ -85,7 +85,7 @@ public class Dash : MonoBehaviour
         dashButton.interactable = true; // Libera o botão de dash (caso esteja usando UI)
 
         // Aplica o dash com força na direção
-        rb.velocity = direction * dashingPower;
+        rb.linearVelocity = direction * dashingPower;
 
         animManager.PlayActionAnimation("Dash");// Ativa animação de dash
         animManager.SetAnimState(true); 

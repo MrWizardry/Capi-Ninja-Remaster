@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
 
     [Header("Drift")]
     [SerializeField] private float driftSpeed = 5f; // Quanto mais baixo, mais demora pra trocar direção
+    [SerializeField] private float AirMultiplier = 0.75f;
 
     // --- LAYERS ---
     [Header("Aplicações")]
@@ -101,7 +103,7 @@ public class Movement : MonoBehaviour
                     currentSpeed = Mathf.Clamp(currentSpeed, 0f, MaxSpeed);
 
                     // Drift na troca de direção
-                    moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, (driftSpeed * 0.25f) * Time.deltaTime);
+                    moveDirection = Mathf.MoveTowards(moveDirection, inputDirection, (driftSpeed * AirMultiplier) * Time.deltaTime);
                 }
                 else
                 {
@@ -115,7 +117,7 @@ public class Movement : MonoBehaviour
                     }
 
                     // Drift de desaceleração (escorrega ao parar)
-                    moveDirection = Mathf.MoveTowards(moveDirection, 0f, (driftSpeed * 0.25f) * Time.deltaTime);
+                    moveDirection = Mathf.MoveTowards(moveDirection, 0f, (driftSpeed * AirMultiplier) * Time.deltaTime);
                 }
             }
             #endregion
@@ -140,17 +142,17 @@ public class Movement : MonoBehaviour
             if (jumpbuffercount > 0f && coyoteTimecount > 0f && jumpCooldownTimer <= 0f)
             {
                 isJumping = true;
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
                 jumpbuffercount = 0f;
                 jumpCooldownTimer = jumpCoolDown;
 
-                if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
-                else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
+                if (rb.linearVelocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Start");
+                else if (rb.linearVelocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Start");
             }
 
-            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                 coyoteTimecount = 0f;
             }
             #endregion
@@ -158,14 +160,14 @@ public class Movement : MonoBehaviour
             #region Animation
             if ((isJumping || !IsGrounded()) && !wallSlide.isWallSliding)
             {
-                if (rb.velocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
-                else if (rb.velocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Middle");
+                if (rb.linearVelocityX != 0) animManager.PlayActionAnimation("Jump_Horiz_Middle");
+                else if (rb.linearVelocityX == 0) animManager.PlayActionAnimation("Jump_Vert_Middle");
             }
             else
             {
-                if (rb.velocity == Vector2.zero && IsGrounded() == true)
+                if (rb.linearVelocity == Vector2.zero && IsGrounded() == true)
                     animManager.PlayActionAnimation("Idle");
-                else if (rb.velocityX != 0 && rb.velocityY == 0 && !wallSlide.isWallSliding)
+                else if (rb.linearVelocityX != 0 && rb.linearVelocityY == 0 && !wallSlide.isWallSliding)
                     animManager.PlayActionAnimation("Run");
             }
 
@@ -190,12 +192,12 @@ public class Movement : MonoBehaviour
         if ((grapplingHook != null && grapplingHook.IsPulling()) || (wallSlide != null && wallSlide.overrideHorizontal))
             return;
 
-        rb.velocity = new Vector2(moveDirection * currentSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveDirection * currentSpeed, rb.linearVelocity.y);
 
-        float clampedX = Mathf.Clamp(rb.velocity.x, -MaxSpeed, MaxSpeed);
-        float clampedY = Mathf.Clamp(rb.velocity.y, -MaxSpeed, MaxSpeed);
+        float clampedX = Mathf.Clamp(rb.linearVelocity.x, -MaxSpeed, MaxSpeed);
+        float clampedY = Mathf.Clamp(rb.linearVelocity.y, -MaxSpeed, MaxSpeed);
 
-        rb.velocity = new Vector2(clampedX, clampedY);
+        rb.linearVelocity = new Vector2(clampedX, clampedY);
     }
     public void SetDirection(int value)
     {
@@ -203,6 +205,11 @@ public class Movement : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.Raycast(groundCheck.position, Vector2.down, 0.3f, groundLayer);
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * 0.3f);
     }
 }

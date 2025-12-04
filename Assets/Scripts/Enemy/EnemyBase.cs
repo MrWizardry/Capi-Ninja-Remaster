@@ -70,7 +70,7 @@ public class EnemyBase : MonoBehaviour
     private void ChasePlayer()
     {
         Vector2 dir = (player.position - transform.position).normalized;
-        rb.velocity = new Vector2(dir.x * chaseSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(dir.x * chaseSpeed, rb.linearVelocity.y);
         if ((dir.x > 0 && direction < 0) || (dir.x < 0 && direction > 0))
         {
             Flip();
@@ -94,7 +94,7 @@ public class EnemyBase : MonoBehaviour
             Flip();
         }
         animManager.Play("Walk");
-        rb.velocity = new Vector2(direction * patrolSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(direction * patrolSpeed, rb.linearVelocity.y);
     }
 
     private void Flip()
@@ -161,7 +161,7 @@ public class EnemyBase : MonoBehaviour
     public void StopMovement()
     {
         canMove = false;
-        rb.velocity = Vector2.zero; // Para o movimento imediatamente
+        rb.linearVelocity = Vector2.zero; // Para o movimento imediatamente
     }
     public void ResumeMovement()
     {

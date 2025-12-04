@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: d53dd1dbcf2542949b1f73b72ac32a3e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1758902725726975406
+    second: Todos os tilesets de terra_0
+  - first:
+      213: 3547463059928021858
+    second: Todos os tilesets de terra_1
+  - first:
+      213: 7412925043193750869
+    second: Todos os tilesets de terra_2
+  - first:
+      213: 8618640801022943162
+    second: Todos os tilesets de terra_3
+  - first:
+      213: 8449880732396772552
+    second: Todos os tilesets de terra_4
+  - first:
+      213: -7027668465494962381
+    second: Todos os tilesets de terra_5
+  - first:
+      213: 8273017011563954174
+    second: Todos os tilesets de terra_6
+  - first:
+      213: -4788377637544105229
+    second: Todos os tilesets de terra_7
+  - first:
+      213: 427728281045858742
+    second: Todos os tilesets de terra_8
+  - first:
+      213: -2195827237239889621
+    second: Todos os tilesets de terra_9
+  - first:
+      213: 8780363910606338445
+    second: Todos os tilesets de terra_10
+  - first:
+      213: -2212236651183625855
+    second: Todos os tilesets de terra_11
+  - first:
+      213: 4245694970885916358
+    second: Todos os tilesets de terra_12
+  - first:
+      213: 580398559496637410
+    second: Todos os tilesets de terra_13
+  - first:
+      213: 5189215470396847633
+    second: Todos os tilesets de terra_14
+  - first:
+      213: 1201407282231130711
+    second: Todos os tilesets de terra_15
+  - first:
+      213: -3395067149695595733
+    second: Todos os tilesets de terra_16
+  - first:
+      213: -4198416912944953029
+    second: Todos os tilesets de terra_17
+  - first:
+      213: -4994077024124016475
+    second: Todos os tilesets de terra_18
+  - first:
+      213: 5791246893597541948
+    second: Todos os tilesets de terra_19
+  - first:
+      213: 3018467778690013514
+    second: Todos os tilesets de terra_20
+  - first:
+      213: 7539722704040903044
+    second: Todos os tilesets de terra_21
+  - first:
+      213: 7912107443070982552
+    second: Todos os tilesets de terra_22
+  - first:
+      213: -6893507757659819170
+    second: Todos os tilesets de terra_23
+  - first:
+      213: 7162093451979334406
+    second: Todos os tilesets de terra_24
+  - first:
+      213: 4675803749953730642
+    second: Todos os tilesets de terra_25
+  - first:
+      213: 4806944257223496098
+    second: Todos os tilesets de terra_26
+  - first:
+      213: 8182096245300628630
+    second: Todos os tilesets de terra_27
+  - first:
+      213: 3603531197835276780
+    second: Todos os tilesets de terra_28
+  - first:
+      213: 1215383864870233939
+    second: Todos os tilesets de terra_29
+  - first:
+      213: -5749347910026100940
+    second: Todos os tilesets de terra_30
+  - first:
+      213: -4869353201637308645
+    second: Todos os tilesets de terra_31
+  - first:
+      213: 5802717542427670067
+    second: Todos os tilesets de terra_32
+  - first:
+      213: -8174029926704801431
+    second: Todos os tilesets de terra_33
+  - first:
+      213: -8803459475909362498
+    second: Todos os tilesets de terra_34
+  - first:
+      213: 716399973941510561
+    second: Todos os tilesets de terra_35
+  - first:
+      213: 2371439050190947175
+    second: Todos os tilesets de terra_36
+  - first:
+      213: 9164359219028023409
+    second: Todos os tilesets de terra_37
+  - first:
+      213: 3494343502769004287
+    second: Todos os tilesets de terra_38
+  - first:
+      213: -6721238861605680236
+    second: Todos os tilesets de terra_39
+  - first:
+      213: -1199724014440589737
+    second: Todos os tilesets de terra_40
+  - first:
+      213: 1609667793225492152
+    second: Todos os tilesets de terra_41
+  - first:
+      213: 6209507442465138320
+    second: Todos os tilesets de terra_42
+  - first:
+      213: -8975080511578677525
+    second: Todos os tilesets de terra_43
+  - first:
+      213: -7647581249660827795
+    second: Todos os tilesets de terra_44
+  - first:
+      213: -5930422936938396048
+    second: Todos os tilesets de terra_45
+  - first:
+      213: -1956145726091641833
+    second: Todos os tilesets de terra_46
+  - first:
+      213: 7715099103535116112
+    second: Todos os tilesets de terra_47
+  - first:
+      213: 8870024773621155941
+    second: Todos os tilesets de terra_48
+  - first:
+      213: 3908350757612800618
+    second: Todos os tilesets de terra_49
+  - first:
+      213: -3942259594671087751
+    second: Todos os tilesets de terra_50
+  - first:
+      213: -1537155161775201142
+    second: Todos os tilesets de terra_51
+  - first:
+      213: -4475329281550818691
+    second: Todos os tilesets de terra_52
+  - first:
+      213: 1454760801324986620
+    second: Todos os tilesets de terra_53
+  - first:
+      213: 3954667960913410282
+    second: Todos os tilesets de terra_54
+  - first:
+      213: -8385979240916544627
+    second: Todos os tilesets de terra_55
+  - first:
+      213: 8550100781422052129
+    second: Todos os tilesets de terra_56
+  - first:
+      213: 7726375069117157838
+    second: Todos os tilesets de terra_57
+  - first:
+      213: 5496608444133716337
+    second: Todos os tilesets de terra_58
+  - first:
+      213: 7985151979786605441
+    second: Todos os tilesets de terra_59
+  - first:
+      213: -7125127298792681717
+    second: Todos os tilesets de terra_60
+  - first:
+      213: 6021865345759583413
+    second: Todos os tilesets de terra_61
+  - first:
+      213: -3624918194944594288
+    second: Todos os tilesets de terra_62
+  - first:
+      213: -6699701807764170529
+    second: Todos os tilesets de terra_63
+  - first:
+      213: 7185834366728342076
+    second: Todos os tilesets de terra_64
+  - first:
+      213: 1958790122156438018
+    second: Todos os tilesets de terra_65
+  - first:
+      213: -1039365144192693393
+    second: Todos os tilesets de terra_66
+  - first:
+      213: 6933252931121946121
+    second: Todos os tilesets de terra_67
+  - first:
+      213: 2005161099257843793
+    second: Todos os tilesets de terra_68
+  - first:
+      213: -2789690301791926886
+    second: Todos os tilesets de terra_69
+  - first:
+      213: -5142399409097408881
+    second: Todos os tilesets de terra_70
+  - first:
+      213: -9014399093393093255
+    second: Todos os tilesets de terra_71
+  - first:
+      213: -2710405019900137953
+    second: Todos os tilesets de terra_72
+  - first:
+      213: 2154890188834126628
+    second: Todos os tilesets de terra_73
+  - first:
+      213: 4722109718515751592
+    second: Todos os tilesets de terra_74
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 248
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2051
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ac39e3a4f1797e0800000000000000
+      internalID: -1758902725726975406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1641
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26b74d49bde1b3130800000000000000
+      internalID: 3547463059928021858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_2
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 2051
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555292a2d0000e660800000000000000
+      internalID: 7412925043193750869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_3
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1641
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abf19af15209b9770800000000000000
+      internalID: 8618640801022943162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_4
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 2051
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cc5de8b1c1044570800000000000000
+      internalID: 8449880732396772552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_5
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1641
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f45fac3c4b87e90800000000000000
+      internalID: -7027668465494962381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_6
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 2051
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eff7803c329afc270800000000000000
+      internalID: 8273017011563954174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_7
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 1641
+        width: 407
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa62c798e34c8db0800000000000000
+      internalID: -4788377637544105229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_8
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 2051
+        width: 406
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9702cfa989fe500800000000000000
+      internalID: 427728281045858742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_9
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 1641
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b21603003cad681e0800000000000000
+      internalID: -2195827237239889621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_10
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 2051
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d89b952d47e1ad970800000000000000
+      internalID: 8780363910606338445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_11
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 1641
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189a9179c7e8c41e0800000000000000
+      internalID: -2212236651183625855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eb02fe2a6dfd0800800000000000000
+      internalID: 580398559496637410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_14
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11637f70afbc30840800000000000000
+      internalID: 5189215470396847633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_15
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a34ffce814ca010800000000000000
+      internalID: 1201407282231130711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_18
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a8e524086971bab0800000000000000
+      internalID: -4994077024124016475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_19
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c36477bcd54ae5050800000000000000
+      internalID: 5791246893597541948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_20
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 1231
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a49d7c2c370c3e920800000000000000
+      internalID: 3018467778690013514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 821
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71cb86383df5ad4e0800000000000000
+      internalID: -1956145726091641833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_47
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 821
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f252122c9811b60800000000000000
+      internalID: 7715099103535116112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_48
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 819
+        width: 413
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5688a944988a81b70800000000000000
+      internalID: 8870024773621155941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_50
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 821
+        width: 257
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97f114f19c74a49c0800000000000000
+      internalID: -3942259594671087751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_51
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 821
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a842bb9468deaaae0800000000000000
+      internalID: -1537155161775201142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_52
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 821
+        width: 407
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d726240dabf64e1c0800000000000000
+      internalID: -4475329281550818691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 411
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf0732cbd39503410800000000000000
+      internalID: 1454760801324986620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_54
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 411
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8bcd6ce8dc1e630800000000000000
+      internalID: 3954667960913410282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_55
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 467
+        width: 270
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d839e5baf440f9b80800000000000000
+      internalID: -8385979240916544627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_58
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 411
+        width: 407
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 171b006f140e74c40800000000000000
+      internalID: 5496608444133716337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_59
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 411
+        width: 406
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18310b02b65f0de60800000000000000
+      internalID: 7985151979786605441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_60
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 411
+        width: 407
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f0608e8767e1d90800000000000000
+      internalID: -7125127298792681717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15012be5563c3db10800000000000000
+      internalID: 2005161099257843793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_69
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95075073770949d0800000000000000
+      internalID: -2789690301791926886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_70
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 56
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ef197abf682a8b0800000000000000
+      internalID: -5142399409097408881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_71
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 0
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97d83bee8cb66e280800000000000000
+      internalID: -9014399093393093255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_72
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 0
+        width: 406
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1eaa67aef4b26ad0800000000000000
+      internalID: -2710405019900137953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de terra_74
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 0
+        width: 407
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aa1d8a25cd488140800000000000000
+      internalID: 4722109718515751592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c267db55c1b4cbc4cb4171b4b4b83a38
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Todos os tilesets de terra_0: -1758902725726975406
+      Todos os tilesets de terra_1: 3547463059928021858
+      Todos os tilesets de terra_10: 8780363910606338445
+      Todos os tilesets de terra_11: -2212236651183625855
+      Todos os tilesets de terra_12: 4245694970885916358
+      Todos os tilesets de terra_13: 580398559496637410
+      Todos os tilesets de terra_14: 5189215470396847633
+      Todos os tilesets de terra_15: 1201407282231130711
+      Todos os tilesets de terra_16: -3395067149695595733
+      Todos os tilesets de terra_17: -4198416912944953029
+      Todos os tilesets de terra_18: -4994077024124016475
+      Todos os tilesets de terra_19: 5791246893597541948
+      Todos os tilesets de terra_2: 7412925043193750869
+      Todos os tilesets de terra_20: 3018467778690013514
+      Todos os tilesets de terra_21: 7539722704040903044
+      Todos os tilesets de terra_22: 7912107443070982552
+      Todos os tilesets de terra_23: -6893507757659819170
+      Todos os tilesets de terra_24: 7162093451979334406
+      Todos os tilesets de terra_25: 4675803749953730642
+      Todos os tilesets de terra_26: 4806944257223496098
+      Todos os tilesets de terra_27: 8182096245300628630
+      Todos os tilesets de terra_28: 3603531197835276780
+      Todos os tilesets de terra_29: 1215383864870233939
+      Todos os tilesets de terra_3: 8618640801022943162
+      Todos os tilesets de terra_30: -5749347910026100940
+      Todos os tilesets de terra_31: -4869353201637308645
+      Todos os tilesets de terra_32: 5802717542427670067
+      Todos os tilesets de terra_33: -8174029926704801431
+      Todos os tilesets de terra_34: -8803459475909362498
+      Todos os tilesets de terra_35: 716399973941510561
+      Todos os tilesets de terra_36: 2371439050190947175
+      Todos os tilesets de terra_37: 9164359219028023409
+      Todos os tilesets de terra_38: 3494343502769004287
+      Todos os tilesets de terra_39: -6721238861605680236
+      Todos os tilesets de terra_4: 8449880732396772552
+      Todos os tilesets de terra_40: -1199724014440589737
+      Todos os tilesets de terra_41: 1609667793225492152
+      Todos os tilesets de terra_42: 6209507442465138320
+      Todos os tilesets de terra_43: -8975080511578677525
+      Todos os tilesets de terra_44: -7647581249660827795
+      Todos os tilesets de terra_45: -5930422936938396048
+      Todos os tilesets de terra_46: -1956145726091641833
+      Todos os tilesets de terra_47: 7715099103535116112
+      Todos os tilesets de terra_48: 8870024773621155941
+      Todos os tilesets de terra_49: 3908350757612800618
+      Todos os tilesets de terra_5: -7027668465494962381
+      Todos os tilesets de terra_50: -3942259594671087751
+      Todos os tilesets de terra_51: -1537155161775201142
+      Todos os tilesets de terra_52: -4475329281550818691
+      Todos os tilesets de terra_53: 1454760801324986620
+      Todos os tilesets de terra_54: 3954667960913410282
+      Todos os tilesets de terra_55: -8385979240916544627
+      Todos os tilesets de terra_56: 8550100781422052129
+      Todos os tilesets de terra_57: 7726375069117157838
+      Todos os tilesets de terra_58: 5496608444133716337
+      Todos os tilesets de terra_59: 7985151979786605441
+      Todos os tilesets de terra_6: 8273017011563954174
+      Todos os tilesets de terra_60: -7125127298792681717
+      Todos os tilesets de terra_61: 6021865345759583413
+      Todos os tilesets de terra_62: -3624918194944594288
+      Todos os tilesets de terra_63: -6699701807764170529
+      Todos os tilesets de terra_64: 7185834366728342076
+      Todos os tilesets de terra_65: 1958790122156438018
+      Todos os tilesets de terra_66: -1039365144192693393
+      Todos os tilesets de terra_67: 6933252931121946121
+      Todos os tilesets de terra_68: 2005161099257843793
+      Todos os tilesets de terra_69: -2789690301791926886
+      Todos os tilesets de terra_7: -4788377637544105229
+      Todos os tilesets de terra_70: -5142399409097408881
+      Todos os tilesets de terra_71: -9014399093393093255
+      Todos os tilesets de terra_72: -2710405019900137953
+      Todos os tilesets de terra_73: 2154890188834126628
+      Todos os tilesets de terra_74: 4722109718515751592
+      Todos os tilesets de terra_8: 427728281045858742
+      Todos os tilesets de terra_9: -2195827237239889621
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
