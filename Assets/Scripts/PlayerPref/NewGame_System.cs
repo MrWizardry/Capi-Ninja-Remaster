@@ -24,6 +24,10 @@ public class NewGame_System : MonoBehaviour
 
     public void StartNewGame()
     {
+        PlayerPrefs.DeleteKey("cp_x");
+        PlayerPrefs.DeleteKey("cp_y");
+        PlayerPrefs.DeleteKey("cp_z");
+        PlayerPrefs.DeleteKey("SavedScene");
         SceneManager.LoadScene(1); // primeira cena do jogo
     }
 

@@ -11,8 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pedro Scene.unity
     guid: da89571d518ccdc4bbc83010918f61e3
-  - enabled: 0
-    path: Assets/Scenes/Testes/Teste_NewGame.unity
-    guid: dae80cd96d9254c46920281666584630
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

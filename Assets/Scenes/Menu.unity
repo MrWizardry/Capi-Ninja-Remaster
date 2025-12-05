@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 895051623}
   - component: {fileID: 895051622}
   - component: {fileID: 895051624}
+  - component: {fileID: 895051625}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -222,11 +223,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a59a10039bdda45b876ac8278780c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeType: 1
   fadeImage: {fileID: 2108154615}
   fadeSpeed: 1
-  scene_Chnager: {fileID: 0}
-  newGameSystem: {fileID: 895051622}
+--- !u!114 &895051625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895051621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff58df8bb03206d4ba9e55da6ca141f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: {fileID: 895051624}
+  newGame: {fileID: 895051622}
 --- !u!1 &1028824663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1519,7 @@ PrefabInstance:
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 895051624}
+      objectReference: {fileID: 895051625}
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 0
@@ -1522,7 +1534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: FadeToContinue
+      value: ContinueGame
       objectReference: {fileID: 0}
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1530,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: FadeManager, Assembly-CSharp
+      value: FadeControllerMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3146725808812895169, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1687,14 +1699,14 @@ PrefabInstance:
     - target: {fileID: 8711090841104512331, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 895051624}
+      objectReference: {fileID: 895051625}
     - target: {fileID: 8711090841104512331, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FadeToNew
+      value: NewGame
       objectReference: {fileID: 0}
     - target: {fileID: 8711090841104512331, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FadeManager, Assembly-CSharp
+      value: FadeControllerMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8711090841104512331, guid: aef7548dc5e69d24f9bdf24af02d377b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument

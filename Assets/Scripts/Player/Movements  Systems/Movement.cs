@@ -46,6 +46,19 @@ public class Movement : MonoBehaviour
     private GrapplingHook grapplingHook;
 
     // --- START ---
+    void Awake()
+    {
+        if(PlayerPrefs.HasKey("cp_x"))
+        {
+            float cp_x = PlayerPrefs.GetFloat("cp_x");
+            float cp_y = PlayerPrefs.GetFloat("cp_y");
+            float cp_z = PlayerPrefs.GetFloat("cp_z");
+
+            transform.position = new Vector3(cp_x, cp_y, cp_z);
+        }
+    }
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,6 +67,8 @@ public class Movement : MonoBehaviour
         wallSlide = GetComponent<WallSlide>();
         grapplingHook = GetComponent<GrapplingHook>();
         currentSpeed = 0f;
+
+        
     }
 
     void Update()
