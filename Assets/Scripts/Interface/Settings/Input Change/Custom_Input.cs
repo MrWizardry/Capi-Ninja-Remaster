@@ -44,13 +44,11 @@ public static class Custom_Input
     {
         Debug.Log("Carregando bindings...");
         SetDefault("Jump", KeyCode.Space);
-        SetDefault("Dash", KeyCode.LeftShift);
         SetDefault("Attack", KeyCode.Mouse0);
-        SetDefault("Defend", KeyCode.Mouse1);
+        SetDefault("Grapple", KeyCode.Mouse1);
         SetDefault("Left", KeyCode.A);
         SetDefault("Right", KeyCode.D);
         SetDefault("Pause", KeyCode.Escape);
-        SetDefault("Grapple", KeyCode.G);
         
     }
 

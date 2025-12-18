@@ -5,9 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    public static Game Instance { get; private set; }
+
+    private bool canReceiveInputs;
+    public bool CanReceiveInputs => canReceiveInputs;
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: if you want the manager to persist across scenes
+        }
+
         Time.timeScale = 1f;
+        canReceiveInputs = false;
     }
     public void ToMenu()
     {
@@ -18,5 +33,21 @@ public class Game : MonoBehaviour
         PlayerPrefs.Save();
 
         SceneManager.LoadScene(0); // volta pro menu
+    }
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public bool isReceivingInputs()
+    {
+        return canReceiveInputs;
+    }
+    public void CanReceiveInputsNow()
+    {
+        canReceiveInputs = true;
+    }
+    public void CanNotReceiveInputsNow()
+    {
+        canReceiveInputs = false;
     }
 }

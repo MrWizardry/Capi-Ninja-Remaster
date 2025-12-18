@@ -32,10 +32,13 @@ public class WallSlide : MonoBehaviour
     private float overrideTimer = 0f;
     private float overrideVelocityX = 0f;
 
+    private Movement moveCtrl;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animManager = GetComponent<AnimationManager>();
+        moveCtrl = GetComponent<Movement>();
 
         if (wallCheck == null)
         {
@@ -56,11 +59,11 @@ public class WallSlide : MonoBehaviour
 
             if (wallStickCounter > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -(wallSlideSpeed * 2));
             }
 
             animManager.PlayActionAnimation("Wall_Slide");
@@ -71,24 +74,29 @@ public class WallSlide : MonoBehaviour
         if ((isWallSliding || wallJumpGraceCounter > 0f) && Input.GetButtonDown("Jump"))
         {
             int jumpDirection = -wallDirection;
+            moveCtrl.SetDirection(jumpDirection);
 
-            float input = Input.GetAxisRaw("Horizontal");
-            float jumpForceX = 0f;
 
-            if (Mathf.Sign(input) == jumpDirection && input != 0)
-            {
-                jumpForceX = wallJumpForceX * jumpDirection;
-            }
-            else
-            {
-                jumpForceX = 0f;
-            }
+            rb.AddForce(new Vector2(jumpDirection * wallJumpForceX, wallJumpForceY), ForceMode2D.Impulse);
+            //overrideHorizontal = true;
+            //overrideTimer = wallJumpControlTime;
+            //overrideVelocityX = jumpForceX;
 
-            rb.velocity = new Vector2(jumpForceX, wallJumpForceY);
+            isWallSliding = false;
+            isTouchingWall = false;
+            wallStickCounter = 0f;
+            wallJumpGraceCounter = 0f;
+        }
+        else if ((isWallSliding || wallJumpGraceCounter > 0f) && Input.GetButtonDown("Horizontal"))
+        {
+            int jumpDirection = -wallDirection;
+            moveCtrl.SetDirection(jumpDirection);
 
-            overrideHorizontal = true;
-            overrideTimer = wallJumpControlTime;
-            overrideVelocityX = jumpForceX;
+
+            rb.AddForce(new Vector2(jumpDirection * wallJumpForceX, 0), ForceMode2D.Impulse);
+            //overrideHorizontal = true;
+            //overrideTimer = wallJumpControlTime;
+            //overrideVelocityX = jumpForceX;
 
             isWallSliding = false;
             isTouchingWall = false;
@@ -99,16 +107,16 @@ public class WallSlide : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (overrideHorizontal)
-        {
-            rb.velocity = new Vector2(overrideVelocityX, rb.velocity.y);
-            overrideTimer -= Time.fixedDeltaTime;
+        //if (overrideHorizontal)
+        //{
+        //    rb.velocity = new Vector2(overrideVelocityX, rb.velocity.y);
+        //    overrideTimer -= Time.fixedDeltaTime;
 
-            if (overrideTimer <= 0f)
-            {
-                overrideHorizontal = false;
-            }
-        }
+        //    if (overrideTimer <= 0f)
+        //    {
+        //        overrideHorizontal = false;
+        //    }
+        //}
     }
 
     void CheckWall()
@@ -124,7 +132,7 @@ public class WallSlide : MonoBehaviour
 
         isTouchingWall = hitRight.collider != null || hitLeft.collider != null;
 
-        if (isTouchingWall && !IsGrounded() && rb.velocity.y <= 0)
+        if (isTouchingWall && !IsGrounded() && rb.linearVelocity.y <= 0)
         {
             if (!isWallSliding)
             {
@@ -154,6 +162,7 @@ public class WallSlide : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * wallCheckDistance);
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * wallCheckDistance);
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
         }
     }
 }

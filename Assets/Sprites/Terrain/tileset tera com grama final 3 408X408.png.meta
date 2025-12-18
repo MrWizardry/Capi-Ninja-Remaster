@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 94ac7e77c73660a48b3eb9c6a495b3c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5237381054967009993
+    second: tileset tera com grama final 3 408X408_0
+  - first:
+      213: -9161954672932392258
+    second: tileset tera com grama final 3 408X408_1
+  - first:
+      213: -6196359695482502053
+    second: tileset tera com grama final 3 408X408_2
+  - first:
+      213: 3921392544475248608
+    second: tileset tera com grama final 3 408X408_3
+  - first:
+      213: -4490666895380440635
+    second: tileset tera com grama final 3 408X408_4
+  - first:
+      213: -3386619945174893603
+    second: tileset tera com grama final 3 408X408_5
+  - first:
+      213: -4007547801459029302
+    second: tileset tera com grama final 3 408X408_6
+  - first:
+      213: 3159083924440431194
+    second: tileset tera com grama final 3 408X408_7
+  - first:
+      213: 1911852434257935119
+    second: tileset tera com grama final 3 408X408_8
+  - first:
+      213: 8365819474120896070
+    second: tileset tera com grama final 3 408X408_9
+  - first:
+      213: -1446093971334724397
+    second: tileset tera com grama final 3 408X408_10
+  - first:
+      213: -2911514145887614833
+    second: tileset tera com grama final 3 408X408_11
+  - first:
+      213: 4851007588416258846
+    second: tileset tera com grama final 3 408X408_12
+  - first:
+      213: -7390508037327569353
+    second: tileset tera com grama final 3 408X408_13
+  - first:
+      213: 1763488446362260398
+    second: tileset tera com grama final 3 408X408_14
+  - first:
+      213: 863675902988848656
+    second: tileset tera com grama final 3 408X408_15
+  - first:
+      213: -7779991651726622262
+    second: tileset tera com grama final 3 408X408_16
+  - first:
+      213: -1752803751685516442
+    second: tileset tera com grama final 3 408X408_17
+  - first:
+      213: -5103746916099659531
+    second: tileset tera com grama final 3 408X408_18
+  - first:
+      213: -2147323823572299997
+    second: tileset tera com grama final 3 408X408_19
+  - first:
+      213: 1261174587860968465
+    second: tileset tera com grama final 3 408X408_20
+  - first:
+      213: -2128547137536272995
+    second: tileset tera com grama final 3 408X408_21
+  - first:
+      213: 3151229590828209598
+    second: tileset tera com grama final 3 408X408_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 819
+        width: 407
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c25ba6125aeea840800000000000000
+      internalID: 5237381054967009993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 409
+        width: 329
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb272af54c23ad080800000000000000
+      internalID: -9161954672932392258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_2
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 819
+        width: 410
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b54c73acfab120aa0800000000000000
+      internalID: -6196359695482502053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_3
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 409
+        width: 410
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e7ff462eb59b6630800000000000000
+      internalID: 3921392544475248608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_4
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 819
+        width: 408
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c91e305042fda1c0800000000000000
+      internalID: -4490666895380440635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_5
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 409
+        width: 328
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddbf89a5a1f4001d0800000000000000
+      internalID: -3386619945174893603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_6
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 134
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca03a9e1845268c0800000000000000
+      internalID: -4007547801459029302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 69
+        width: 329
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a3beb771257db20800000000000000
+      internalID: 3159083924440431194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_8
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 51
+        width: 410
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0bf8e6d8a3488a10800000000000000
+      internalID: 1911852434257935119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_9
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 69
+        width: 328
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e650adc7c591470800000000000000
+      internalID: 8365819474120896070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_10
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 134
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d482ced1317eebe0800000000000000
+      internalID: -1446093971334724397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_11
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 68
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8808d76f493897d0800000000000000
+      internalID: -2911514145887614833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_12
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 47
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13864e23bd325340800000000000000
+      internalID: 4851007588416258846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_13
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 57
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73ebb6db814af6990800000000000000
+      internalID: -7390508037327569353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_14
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 61
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea39dea066b297810800000000000000
+      internalID: 1763488446362260398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_15
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 61
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e07b668a46cfb00800000000000000
+      internalID: 863675902988848656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_16
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 57
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac1845b10dae70490800000000000000
+      internalID: -7779991651726622262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_17
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 47
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66310db464acca7e0800000000000000
+      internalID: -1752803751685516442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_18
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 68
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f8626a7839db29b0800000000000000
+      internalID: -5103746916099659531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_19
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 55
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32f4d360c5c2332e0800000000000000
+      internalID: -2147323823572299997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_20
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 55
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114e33d0b97908110800000000000000
+      internalID: 1261174587860968465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_21
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 42
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d95d97be7a1e572e0800000000000000
+      internalID: -2128547137536272995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset tera com grama final 3 408X408_22
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 42
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5d30fed9a6bbb20800000000000000
+      internalID: 3151229590828209598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tileset tera com grama final 3 408X408_0: 5237381054967009993
+      tileset tera com grama final 3 408X408_1: -9161954672932392258
+      tileset tera com grama final 3 408X408_10: -1446093971334724397
+      tileset tera com grama final 3 408X408_11: -2911514145887614833
+      tileset tera com grama final 3 408X408_12: 4851007588416258846
+      tileset tera com grama final 3 408X408_13: -7390508037327569353
+      tileset tera com grama final 3 408X408_14: 1763488446362260398
+      tileset tera com grama final 3 408X408_15: 863675902988848656
+      tileset tera com grama final 3 408X408_16: -7779991651726622262
+      tileset tera com grama final 3 408X408_17: -1752803751685516442
+      tileset tera com grama final 3 408X408_18: -5103746916099659531
+      tileset tera com grama final 3 408X408_19: -2147323823572299997
+      tileset tera com grama final 3 408X408_2: -6196359695482502053
+      tileset tera com grama final 3 408X408_20: 1261174587860968465
+      tileset tera com grama final 3 408X408_21: -2128547137536272995
+      tileset tera com grama final 3 408X408_22: 3151229590828209598
+      tileset tera com grama final 3 408X408_3: 3921392544475248608
+      tileset tera com grama final 3 408X408_4: -4490666895380440635
+      tileset tera com grama final 3 408X408_5: -3386619945174893603
+      tileset tera com grama final 3 408X408_6: -4007547801459029302
+      tileset tera com grama final 3 408X408_7: 3159083924440431194
+      tileset tera com grama final 3 408X408_8: 1911852434257935119
+      tileset tera com grama final 3 408X408_9: 8365819474120896070
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

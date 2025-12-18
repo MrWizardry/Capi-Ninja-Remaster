@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public enum InputAction
 {
     Jump,
-    Dash,
     Attack,
-    Defend,
     Left,
     Right,
     Pause,

@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -19,27 +19,45 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private VolumeProfile volume;
     private ChromaticAberration chromAb;
     [SerializeField] private float chromValue = 0.75f;
-    private LensDistortion lensDistortion;
-    [SerializeField] private float lensValue = -0.4f;
+    public CinemachineVirtualCamera virtualCamera;
+    public float shakeAmplitude = 1.0f;
+    public float shakeFrequency = 2.0f;
+    public float shakeDuration = 0.5f;
+
+    private CinemachineBasicMultiChannelPerlin _perlin;
     #endregion
     private void Start()
     {
         isDoingAction = false;
         animManager = GetComponent<Animator>();
+
+        virtualCamera = FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>();
+        if (virtualCamera != null)
+        {
+            _perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            if (_perlin == null)
+            {
+                Debug.LogWarning("CinemachineBasicMultiChannelPerlin component not found on Virtual Camera.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Virtual Camera not assigned in CameraShakeController.");
+        }
+        
         if (volume != null)
         {
             volume.TryGet(out chromAb);
-            volume.TryGet(out lensDistortion);
 
             chromAb.intensity.Override(0);
-            lensDistortion.intensity.Override(0);
         }
         else Debug.LogWarning("Post Process Volume not found!");
+
+        PlayAnimation("Game Start");
     }
     void Update()
     {
         animManager.SetFloat("Direction",animDirection);
-        animManager.SetFloat("Wall Direction",animWalldirection);
     }
     private void PlayAnimation(string name)
     {
@@ -73,13 +91,13 @@ public class AnimationManager : MonoBehaviour
     public void StartDash()
     {
         chromAb.intensity.Override(Mathf.Lerp(chromAb.intensity.value, chromValue, 1f));
-        lensDistortion.intensity.Override(Mathf.Lerp(lensDistortion.intensity.value, lensValue, 1f));
+        _perlin.m_FrequencyGain = 2;
     }
     public void EndDash()
     {
 
         chromAb.intensity.Override(Mathf.Lerp(chromAb.intensity.value, 0, 1f));
-        lensDistortion.intensity.Override(Mathf.Lerp(lensDistortion.intensity.value, 0, 1f));
+        _perlin.m_FrequencyGain = 0;
     }
     public void SetDirection(float value)
     {
@@ -92,6 +110,14 @@ public class AnimationManager : MonoBehaviour
     public float ReturnDirection()
     {
         return animDirection;
+    }
+    private void StopInputs()
+    {
+        Game.Instance.CanNotReceiveInputsNow();
+    }
+    private void StartInputs()
+    {
+        Game.Instance.CanReceiveInputsNow();
     }
 }
 

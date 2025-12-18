@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 9017340274164533075}
   - component: {fileID: 4626785093328879776}
   - component: {fileID: 5762776455929904854}
+  - component: {fileID: 5920353306675694494}
+  - component: {fileID: 5240297787083016476}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -124,23 +126,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c26f3b9d18f49045b3cc34327b7bf6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walk: 6
-  running: 12
+  moveDirection: 0
+  walk: 8
+  running: 13
   MaxSpeed: 20
-  accelerationTime: 1
-  decelerationTime: 0.09
+  accelerationTime: 1.15
+  decelerationTime: 0.75
   currentSpeed: 0
   rb: {fileID: 0}
   driftSpeed: 5
   groundCheck: {fileID: 4076998805811337642}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1544
+    m_Bits: 5640
   jumpingPower: 16
   coyoteTime: 0.2
   jumpbuffer: 0.001
   jumpCoolDown: 0.2
-  animManager: {fileID: 0}
+  animManager: {fileID: 9017340274164533075}
 --- !u!114 &50479514644027715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,12 +158,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveableRange: {fileID: 7216322577456367382}
   damagePointer: {fileID: 4773298911796147509}
-  damageRange: 0.5
+  damageRange: 0.37
   enemy:
     serializedVersion: 2
     m_Bits: 128
-  maxRangeDistance: 5
+  maxRangeDistance: 1
   damage: 20
+  timeSinceLastAtk: 0
+  timeBetweenAtk: 0.75
 --- !u!114 &1794204537550287103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,12 +181,12 @@ MonoBehaviour:
   wallCheck: {fileID: 7842025193502598149}
   wallLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 520
   wallCheckDistance: 0.4
-  wallSlideSpeed: 5
+  wallSlideSpeed: 2
   wallStickTime: 2
-  wallJumpForceX: 12
-  wallJumpForceY: 14
+  wallJumpForceX: 7
+  wallJumpForceY: 16
   wallJumpControlTime: 0.2
   isTouchingWall: 0
   isWallSliding: 0
@@ -235,11 +240,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animManager: {fileID: 0}
-  animDirection: 0
+  animDirection: 1
   attackClip: {fileID: 7400000, guid: 1aeb21960673ac248b6e0ce8600aed38, type: 2}
   volume: {fileID: 11400000, guid: a19a556fa5631ce4e90f7228ab9740d8, type: 2}
   chromValue: 0.75
-  lensValue: -0.4
+  virtualCamera: {fileID: 0}
+  shakeAmplitude: 1
+  shakeFrequency: 2
+  shakeDuration: 0.5
 --- !u!114 &4626785093328879776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,11 +263,14 @@ MonoBehaviour:
   lineRenderer: {fileID: 5762776455929904854}
   grappleLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1672
   maxDistancePixels: 560
   pullSpeed: 2
   momentumForce: 15
-  grapplePoint: {x: 0, y: 0}
+  pullForceUP: 5
+  grappleCooldown: 1
+  grapplePoint: {x: 0.387, y: 0.389}
+  isOnCooldown: 0
 --- !u!120 &5762776455929904854
 LineRenderer:
   serializedVersion: 2
@@ -366,6 +377,35 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5920353306675694494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713591552729757737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37f3a079d6606046979a48e4b658dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intangibleDuration: 3
+  cooldownDuration: 5
+  intangibleKey: 304
+--- !u!114 &5240297787083016476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713591552729757737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c917f2d8451ffa479a4e258f4e56265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  momentumDecay: 2
+  momentumMultiplier: 1
 --- !u!1 &824419936157071384
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4773298911796147509}
+  - component: {fileID: 2882242574328751355}
   m_Layer: 8
   m_Name: Damage Pointer
   m_TagString: Untagged
@@ -454,11 +495,65 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1187563836767259232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2882242574328751355
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969358843182783255}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6567094099598416648
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +628,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 8ce3fc5819889a44a9a4d2df4367cc4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
