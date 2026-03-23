@@ -87,7 +87,7 @@ public class GrapplingHookSimple : MonoBehaviour
         if (rb != null)
         {
             rb.gravityScale = 0f;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         // Calcula direção do impulso além do ponto
