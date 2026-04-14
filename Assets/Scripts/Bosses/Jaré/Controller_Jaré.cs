@@ -1,147 +1,77 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
+using Cinemachine;
+using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
-
-
-public enum BossState
-{
-    Idle,
-    Rabada,
-    Bote,
-    Moidida,
-    Enraged,
-    Tired,
-    Death
-}
-
+using UnityEngine.SceneManagement;
+[RequireComponent(typeof(Rigidbody2D))]
 public class Controller_Jaré : MonoBehaviour
 {
-    public BossState currentState = BossState.Idle;
+    [Header("Movimento")]
+    public float velocidade = 4f;
 
-    public float health = 100f;
-    public float cdBetweenAttacks = 3f;
-    public float enragedCDModifier = 0.5f;
-    public float tiredCDModifier = 1.5f;
-    public float idleTime = 2f;
+    /*[Header("Delay inicial")]
+    public float tempoEspera = 3f;*/
 
-    public bool isEnraged = false;
-    public bool isTired = false;
-    public bool isIdle = false;
-
-    private float attackTimer;
-    public Animator animator;
-
+    private Transform player;
+    private Rigidbody2D rb;
+    [SerializeField] private bool perseguindo = false;
 
     void Start()
     {
-        StartCoroutine(BossLoop());
-        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
     }
 
-    IEnumerator BossLoop()
+    void Update()
     {
-        while (currentState != BossState.Death)
+
+        if (player == null || !perseguindo) return;
+
+        if (transform.position.x < player.position.x)
         {
-            if(health <= 50 && !isEnraged)
-             EnterEnraged();
-            
-            if(health <= 20 && !isTired)
-                EnterTired();
+            rb.linearVelocity = new Vector2(velocidade, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
 
-            if(!isIdle)
-            {
-                BossState nextAttack = ChooseNextAttack();
-                ChangeState(nextAttack);
+    }
 
-                yield return ExecuteAttack(nextAttack);
-
-                ChangeState(BossState.Idle);
-                isIdle = true;
-                yield return new WaitForSeconds(idleTime);
-                isIdle = false;
-            }
-
-            yield return null;
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
-    BossState ChooseNextAttack()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        int randomAttack = Random.Range(0, 3);
-        switch (randomAttack)
+        if (col.CompareTag("AttackPoint"))
         {
-            case 0:
-                return BossState.Rabada;
-            case 1:
-                return BossState.Bote;
-            case 2:
-                return BossState.Moidida;
-            default:
-                return BossState.Idle;
+            col.gameObject.SetActive(false);
+            StartCoroutine(ExecuteAttack());
+        }
+        if (col.CompareTag("Destructable")) ;
+        {
+            Destroy(col.gameObject);
         }
     }
 
-    IEnumerator ExecuteAttack(BossState attack)
+    IEnumerator ExecuteAttack()
     {
-        float delay = cdBetweenAttacks;
-        if(isEnraged)
-            delay *= enragedCDModifier;
-        if(isTired)
-            delay *= tiredCDModifier;
-        
-        switch (attack)
-        {
-            case BossState.Rabada:
-                // Execute Rabada attack
-                animator.SetTrigger("Rabada");
-                Debug.Log("Executing Rabada attack");
-                break;
-            case BossState.Bote:
-                // Execute Bote attack
-                animator.SetTrigger("bote");
-                Debug.Log("Executing Bote attack");
-                break;
-            case BossState.Moidida:
-                // Execute Moidida attack
-                animator.SetTrigger("moidida");
-                Debug.Log("Executing Moidida attack");
-                break;
-        }
-        yield return new WaitForSeconds(delay);
-        animator.SetTrigger("idle");
-    }
+        perseguindo = false;
+        rb.linearVelocity = Vector2.zero;
 
-    void EnterEnraged()
-    {
-        isEnraged = true;
-        Debug.Log("Jaré is enraged!");
-    }
-    void EnterTired()
-    {
-        isEnraged = false;
-        isTired = true;
-        Debug.Log("Jaré is tired!");
-    }
-    void ChangeState(BossState newState)
-    {
-        currentState = newState;
-        Debug.Log("Jaré changed state to: " + newState);
-    }
-    public void TakeDamage(float damage)
-    {
-        if(currentState == BossState.Idle)
-        {
-            health -= damage;
-            Debug.Log($"Jaré levou {damage} de dano! Vida atual: {health}");
-            if (health <= 0)
-            {
-                currentState = BossState.Death;
-                Debug.Log("Jaré morreu!");
-                Destroy(gameObject);
-            }
-        }
-        
-    }
+        Debug.Log("Ataque executado!");
 
+        yield return new WaitForSeconds(2f);
+        perseguindo = true;
+    }
 }
