@@ -42,12 +42,12 @@ public class Movement : MonoBehaviour
 
     public AnimationManager animManager;
     private WallSlide wallSlide;
-    private GrapplingHook grapplingHook;
+    private HookGrapple grapplingHook;
 
     // --- START ---
     void Awake()
     {
-        if(PlayerPrefs.HasKey("cp_x"))
+        if (PlayerPrefs.HasKey("cp_x"))
         {
             float cp_x = PlayerPrefs.GetFloat("cp_x");
             float cp_y = PlayerPrefs.GetFloat("cp_y");
@@ -64,16 +64,16 @@ public class Movement : MonoBehaviour
         animManager = GetComponent<AnimationManager>();
         isJumping = false;
         wallSlide = GetComponent<WallSlide>();
-        grapplingHook = GetComponent<GrapplingHook>();
+        grapplingHook = GetComponent<HookGrapple>();
         currentSpeed = 0f;
 
-        
+
     }
 
     void Update()
     {
         #region Input Reading
-        if(Game.Instance.isReceivingInputs())
+        if (Game.Instance.isReceivingInputs())
         {
             #region Movement
             if (Custom_Input.GetKey("Right"))
@@ -204,9 +204,10 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((grapplingHook != null && grapplingHook.IsPulling()) || (wallSlide != null && wallSlide.overrideHorizontal))
+        if ((grapplingHook != null && grapplingHook.IsGrappling) ||
+        (wallSlide != null && wallSlide.overrideHorizontal) ||
+        (wallSlide != null && wallSlide.overrideHorizontal))
             return;
-
         rb.linearVelocity = new Vector2(moveDirection * currentSpeed, rb.linearVelocity.y);
 
         float clampedX = Mathf.Clamp(rb.linearVelocity.x, -MaxSpeed, MaxSpeed);
@@ -226,5 +227,25 @@ public class Movement : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * 0.3f);
+    }
+
+    public void FreezeMovementState()
+    {
+        inputDirection = 0f;
+        accelerationTimer = 0f;
+    }
+
+    public void RestoreMovementState()
+    {
+        // Quando o hook termina, sincroniza currentSpeed e moveDirection
+        // com a velocidade real do rigidbody, para não perder o momentum
+        float realVelocityX = rb.linearVelocity.x;
+
+        if (Mathf.Abs(realVelocityX) > 0.1f)
+        {
+            moveDirection = Mathf.Sign(realVelocityX);
+            currentSpeed = Mathf.Abs(realVelocityX);
+            accelerationTimer = accelerationTime; // Considera que já está em velocidade máxima
+        }
     }
 }

@@ -1,127 +1,112 @@
 using UnityEngine;
 using System.Collections;
 
-public class GrapplingHookSimple : MonoBehaviour
+public class HookGrapple : MonoBehaviour
 {
-    [Header("Configurações")]
+    [Header("Grapple Settings")]
     [SerializeField] private LayerMask grappleLayer;
-    [SerializeField] private float grappleSpeed = 20f;
     [SerializeField] private float maxDistance = 15f;
-    [Range(0.1f,0.9f)]
-    [SerializeField] private float stopDuration = 0.5f; // tempo parado no ponto
-    [Range(2, 10)]
-    [SerializeField] private int gravityReturnSpeed = 2; // velocidade do retorno da gravidade
+    [SerializeField] private float grappleForce = 25f;
+    [SerializeField] private float cooldown = 0.5f;
     [SerializeField] private KeyCode grappleKey = KeyCode.X;
-    [SerializeField] private float overshootForce = 10f;
 
-    [Header("Dependências")]
+    [Header("Visual")]
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private float lineVisibleDuration = 0.15f;
 
-    private Vector3 targetPoint;
-    private bool isGrappling = false;
-
+    [Header("Cooldown Visual (opcional)")]
+    [SerializeField] private Color colorReady = Color.white;
+    [SerializeField] private Color colorCooldown = Color.red;
     private Rigidbody2D rb;
-    private float originalGravity;
+    private float cooldownTimer;
+    private float lineTimer;
+    private bool isGrappling;
+    private Movement movement;
+    public bool IsGrappling => isGrappling;
+
+    public bool IsReady => cooldownTimer <= 0f;
+    public float CooldownLeft => Mathf.Max(0f, cooldownTimer);
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-            originalGravity = rb.gravityScale;
+        movement = GetComponent<Movement>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(grappleKey))
-        {
-            TryStartGrapple();
-        }
+        if (cooldownTimer > 0f)
+            cooldownTimer -= Time.deltaTime;
 
-        if (isGrappling)
-        {
-            MoveTowardsTarget();
-        }
+        if (Input.GetKeyDown(grappleKey) && IsReady)
+            TryGrapple();
+
+        TickLineRenderer();
     }
 
-    private void TryStartGrapple()
+    private void TryGrapple()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - transform.position;
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 origin = transform.position;
+        Vector2 direction = ((Vector2)mouseWorld - origin).normalized;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance, grappleLayer);
-        if (hit.collider != null)
-        {
-            targetPoint = hit.point;
-            isGrappling = true;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, grappleLayer);
+        if (hit.collider == null) return;
 
-            if (rb != null)
-                rb.gravityScale = 0f;
+        Vector2 grappleDir = (hit.point - origin).normalized;
+        rb.AddForce(grappleDir * grappleForce, ForceMode2D.Impulse);
 
-            if (lineRenderer)
-            {
-                lineRenderer.enabled = true;
-                lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, targetPoint);
-            }
-        }
+        // Salva e congela o estado do movimento ANTES do hook
+        if (movement != null)
+            movement.FreezeMovementState();
+
+        isGrappling = true;
+        StartCoroutine(StopGrappleAfter(0.3f));
+
+        cooldownTimer = cooldown;
+        ShowLine(origin, hit.point);
+
     }
 
-    private void MoveTowardsTarget()
+    private void ShowLine(Vector2 from, Vector2 to)
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint, grappleSpeed * Time.deltaTime);
+        if (lineRenderer == null) return;
+        lineRenderer.SetPosition(0, from);
+        lineRenderer.SetPosition(1, to);
+        lineRenderer.enabled = true;
+        lineTimer = lineVisibleDuration;
+    }
 
-        if (lineRenderer)
+    private void TickLineRenderer()
+    {
+        if (lineRenderer != null)
+            lineRenderer.startColor = lineRenderer.endColor =
+                IsReady ? colorReady : colorCooldown;
+
+        if (lineTimer <= 0f) return;
+
+        lineTimer -= Time.deltaTime;
+
+        if (lineRenderer != null)
             lineRenderer.SetPosition(0, transform.position);
 
-        // Chegou no ponto → pausa por 0.5s
-        if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
-        {
-            StartCoroutine(StopAtPoint());
-        }
-    }
-
-    private IEnumerator StopAtPoint()
-    {
-        isGrappling = false;
-
-        if (rb != null)
-        {
-            rb.gravityScale = 0f;
-            rb.linearVelocity = Vector2.zero;
-        }
-
-        // Calcula direção do impulso além do ponto
-        Vector2 direction = (targetPoint - transform.position).normalized;
-
-        // Aplica impulso imediatamente
-        rb.AddForce(direction * overshootForce, ForceMode2D.Impulse);
-
-        // Opcional: espera um pouquinho antes de voltar gravidade
-        yield return new WaitForSeconds(0.1f);
-
-        // Ativa gravidade suave de novo
-        if (rb != null)
-            yield return StartCoroutine(SmoothGravityReturn());
-
-        if (lineRenderer)
+        if (lineTimer <= 0f && lineRenderer != null)
             lineRenderer.enabled = false;
-    }
-
-    private IEnumerator SmoothGravityReturn()
-    {
-        float elapsed = 0f;
-        while (elapsed < 1f)
-        {
-            elapsed += Time.deltaTime * gravityReturnSpeed;
-            rb.gravityScale = Mathf.Lerp(0f, originalGravity, elapsed);
-            yield return null;
-        }
-        rb.gravityScale = originalGravity;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = IsReady ? Color.cyan : Color.red;
         Gizmos.DrawWireSphere(transform.position, maxDistance);
+    }
+
+    private IEnumerator StopGrappleAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isGrappling = false;
+
+        // Restaura o estado do movimento ao terminar o hook
+        if (movement != null)
+            movement.RestoreMovementState();
     }
 }

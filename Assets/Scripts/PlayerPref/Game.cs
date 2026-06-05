@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: if you want the manager to persist across scenes
+            DontDestroyOnLoad(gameObject); 
         }
 
         Time.timeScale = 1f;

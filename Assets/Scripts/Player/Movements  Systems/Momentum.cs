@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class Momentum : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Vector2 momentum;
-
     [Header("Momentum Config")]
-    [SerializeField] private float momentumDecay = 2f; // Velocidade que o momentum se perde
-    [SerializeField] private float momentumMultiplier = 1f; // Multiplicador geral
+    [SerializeField] private float momentumMultiplier = 1f;
+    [SerializeField] private float maxMomentum = 20f;
+    private Rigidbody2D rb;
+    private Vector2 pendingImpulse;
+    public float MaxMomentum => maxMomentum;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        // momentum decai suave com o tempo
-        momentum = Vector2.Lerp(momentum, Vector2.zero, momentumDecay * Time.deltaTime);
-    }
-
     private void FixedUpdate()
     {
-        if (momentum != Vector2.zero)
-        {
-            rb.linearVelocity += momentum * Time.fixedDeltaTime;
-        }
+        if (pendingImpulse == Vector2.zero) return;
+
+        rb.AddForce(pendingImpulse, ForceMode2D.Impulse);
+        pendingImpulse = Vector2.zero;
     }
 
     public void AddMomentum(Vector2 direction, float force)
     {
-        momentum += direction.normalized * force * momentumMultiplier;
+        Vector2 added = direction.normalized * (force * momentumMultiplier);
+        pendingImpulse += added;
+
+        if (pendingImpulse.magnitude > maxMomentum)
+            pendingImpulse = pendingImpulse.normalized * maxMomentum;
     }
 
     public void ClearMomentum()
     {
-        momentum = Vector2.zero;
+        pendingImpulse    = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 }
