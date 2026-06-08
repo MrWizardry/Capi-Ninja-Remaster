@@ -881,12 +881,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2062281255720736069, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: driftSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062281255720736069, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
       propertyPath: moveDirection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2062281255720736069, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: accelerationTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062281255720736069, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: decelerationTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: forceX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: forceY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: antiGrav
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: grappleForce
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2945358631502175242, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
       propertyPath: grappleLayer.m_Bits
-      value: 0
+      value: 17928
       objectReference: {fileID: 0}
     - target: {fileID: 4076998805811337642, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
       propertyPath: m_LocalPosition.y
@@ -907,6 +939,10 @@ PrefabInstance:
     - target: {fileID: 4626785093328879776, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
       propertyPath: grappleLayer.m_Bits
       value: 22024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240297787083016476, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
+      propertyPath: maxMomentum
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5920353306675694494, guid: 88a359deb355e234e9fd53bb3bd1ff83, type: 3}
       propertyPath: cooldownDuration
@@ -6757,7 +6793,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1326562557}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 7
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -15645,7 +15681,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

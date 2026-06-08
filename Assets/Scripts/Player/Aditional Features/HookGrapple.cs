@@ -9,7 +9,8 @@ public class HookGrapple : MonoBehaviour
     [SerializeField] private float grappleForce = 25f;
     [SerializeField] private float forceX = 2f;
     [SerializeField] private float forceY = 2f;
-    [SerializeField] public float antiGrav = 2f;
+    [SerializeField] private float antiGrav;
+    [SerializeField] private float value;
     [SerializeField] private float cooldown = 0.5f;
     [SerializeField] private KeyCode grappleKey = KeyCode.X;
 
@@ -25,7 +26,6 @@ public class HookGrapple : MonoBehaviour
     private float lineTimer;
     private bool isGrappling;
     private Movement movement;
-    private float originalGravityScale = 4f;
     public bool IsGrappling => isGrappling;
 
     public bool IsReady => cooldownTimer <= 0f;
@@ -35,10 +35,20 @@ public class HookGrapple : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movement = GetComponent<Movement>();
+        value = 0f;
     }
 
     private void Update()
     {
+        if (rb.linearVelocityY < 0f)
+        {
+            value = antiGrav;
+        }
+        else
+        {
+            value = 0f;
+        }
+
         if (cooldownTimer > 0f)
             cooldownTimer -= Time.deltaTime;
 
@@ -61,7 +71,8 @@ public class HookGrapple : MonoBehaviour
         Vector2 force = grappleDir * grappleForce;
         force.x *= forceX;
         force.y *= forceY;
-        Vector2 antiGravity = (rb.gravityScale * rb.mass * -Physics2D.gravity) * antiGrav;
+
+        Vector2 antiGravity = (rb.gravityScale * rb.mass * -Physics2D.gravity) * value;
 
         Vector2 soma = force + antiGravity;
         rb.AddForce(soma, ForceMode2D.Force);
