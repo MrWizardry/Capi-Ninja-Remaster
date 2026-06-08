@@ -7,6 +7,9 @@ public class HookGrapple : MonoBehaviour
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private float maxDistance = 15f;
     [SerializeField] private float grappleForce = 25f;
+    [SerializeField] private float forceX = 2f;
+    [SerializeField] private float forceY = 2f;
+    [SerializeField] public float antiGrav = 2f;
     [SerializeField] private float cooldown = 0.5f;
     [SerializeField] private KeyCode grappleKey = KeyCode.X;
 
@@ -22,6 +25,7 @@ public class HookGrapple : MonoBehaviour
     private float lineTimer;
     private bool isGrappling;
     private Movement movement;
+    private float originalGravityScale = 4f;
     public bool IsGrappling => isGrappling;
 
     public bool IsReady => cooldownTimer <= 0f;
@@ -54,7 +58,17 @@ public class HookGrapple : MonoBehaviour
         if (hit.collider == null) return;
 
         Vector2 grappleDir = (hit.point - origin).normalized;
-        rb.AddForce(grappleDir * grappleForce, ForceMode2D.Impulse);
+        Vector2 force = grappleDir * grappleForce;
+        force.x *= forceX;
+        force.y *= forceY;
+        Vector2 antiGravity = (rb.gravityScale * rb.mass * -Physics2D.gravity) * antiGrav;
+
+        Vector2 soma = force + antiGravity;
+        rb.AddForce(soma, ForceMode2D.Force);
+
+        Debug.Log("Anti Gravidade :" + antiGravity);
+        Debug.Log("Força : " + force);
+        Debug.Log("Soma :" + soma);
 
         // Salva e congela o estado do movimento ANTES do hook
         if (movement != null)

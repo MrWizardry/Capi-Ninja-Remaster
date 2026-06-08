@@ -214,6 +214,15 @@ public class Movement : MonoBehaviour
         float clampedY = Mathf.Clamp(rb.linearVelocity.y, -MaxSpeed, MaxSpeed);
 
         rb.linearVelocity = new Vector2(clampedX, clampedY);
+
+        if (rb.linearVelocityY < 0f)
+        {
+            grapplingHook.antiGrav = 20f;;
+        }
+        else
+        {
+            grapplingHook.antiGrav = 0f;
+        }
     }
     public void SetDirection(int value)
     {
