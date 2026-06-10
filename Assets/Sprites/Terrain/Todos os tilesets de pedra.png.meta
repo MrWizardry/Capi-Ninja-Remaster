@@ -1,0 +1,896 @@
+fileFormatVersion: 2
+guid: 5ba1f88e689e1c3438d6ccdbfb1f3e90
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3911163055818714843
+    second: Todos os tilesets de pedra_0
+  - first:
+      213: 5396422749886121278
+    second: Todos os tilesets de pedra_1
+  - first:
+      213: 9014965181325514909
+    second: Todos os tilesets de pedra_2
+  - first:
+      213: 1016678304618428834
+    second: Todos os tilesets de pedra_3
+  - first:
+      213: -8482728905369483216
+    second: Todos os tilesets de pedra_4
+  - first:
+      213: -5650944902600654119
+    second: Todos os tilesets de pedra_5
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 408
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2039
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdea4b8b31e374630800000000000000
+      internalID: 3911163055818714843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_1
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 2039
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e358cc846e1f3ea40800000000000000
+      internalID: 5396422749886121278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_2
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 2039
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d981c6fa1179b1d70800000000000000
+      internalID: 9014965181325514909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_3
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 2039
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a9b0ad0887fb1e00800000000000000
+      internalID: 1016678304618428834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_4
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 2039
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0388385010b474a80800000000000000
+      internalID: -8482728905369483216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1631
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d20f231d8fc391b0800000000000000
+      internalID: -5650944902600654119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1631
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dffc7b05c5fbf1b468e19d8fbfe49a1e
+      internalID: -1970712096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_7
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1631
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fb6ee07848191f40904e494aaa49a62
+      internalID: -2109989610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_8
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 1631
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406132796085d3849a2868cfd2b629e1
+      internalID: 1129741930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_9
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1631
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31728fcb312b6fc4cb04002363e70928
+      internalID: -1772608578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206089342de083b449a14fee77446cc0
+      internalID: 25714427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_11
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b87a0b72db845645bf383afc73e5fdc
+      internalID: 2119342540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_12
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d720bc537f4fa6f479e28f514cb3806e
+      internalID: -133929847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_13
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fadbd687f822db44ac13ff76ec9e8c9
+      internalID: -77680466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_14
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c74c02c0271024095890c5f046781e
+      internalID: -1179362881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 815
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126de1d04273380478e81852fe7ed619
+      internalID: 1199162917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_16
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 815
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b108a6644ad0b341aaa951246aab284
+      internalID: -1980929378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_17
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 815
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45636b0281f6ae440a2d92bd218afbf8
+      internalID: -1608814194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_18
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 815
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2494daf835c66f4caf089838126014d
+      internalID: -850021053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_19
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 815
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f93d3e40f16fb84197700197d68de99
+      internalID: 1383254551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 407
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3afc820c71e72745b43e051415ce48b
+      internalID: 464291882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_21
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 407
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bee4545551dc4d479077562494cc748
+      internalID: -836621206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_22
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 407
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8689d11b4678fc41b8e197dec4bce37
+      internalID: 1420285574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_23
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 407
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c91b98e161a4c459e5514f23fd5391
+      internalID: -1221750355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_24
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 407
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6eac90057ee7147b0f4ffbdd628e77
+      internalID: 546575803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_25
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 815
+        width: 407
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d758a1c6ee6d0d3429f7606165f7ad3b
+      internalID: -1538981421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_26
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 407
+        width: 407
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea67d2c77774590478ab0eabeb91ea9a
+      internalID: -271549028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 408
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ecbf2c770a10b4a9b1313f35b15c94
+      internalID: 1152562211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_28
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 408
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc54d297f9ad044892891f9bb15d745
+      internalID: 1368904088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_29
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1223
+        width: 408
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f046bf393f15fc4d903b454d28f18c1
+      internalID: 596525935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_30
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 2039
+        width: 407
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd6c2629d5b8484cb18272fad08e69b
+      internalID: -1840756947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_31
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 1631
+        width: 407
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8dd767e2fd276428e108b9505cfb5a
+      internalID: 1539229390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Todos os tilesets de pedra_32
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 1223
+        width: 407
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adff184effc245e4a9cb0c9cc50767fe
+      internalID: 952583467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8e72a4242a1704a45b710b7ad173f07b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":408.0,"y":408.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Todos os tilesets de pedra_0: 3911163055818714843
+      Todos os tilesets de pedra_1: 5396422749886121278
+      Todos os tilesets de pedra_10: 25714427
+      Todos os tilesets de pedra_11: 2119342540
+      Todos os tilesets de pedra_12: -133929847
+      Todos os tilesets de pedra_13: -77680466
+      Todos os tilesets de pedra_14: -1179362881
+      Todos os tilesets de pedra_15: 1199162917
+      Todos os tilesets de pedra_16: -1980929378
+      Todos os tilesets de pedra_17: -1608814194
+      Todos os tilesets de pedra_18: -850021053
+      Todos os tilesets de pedra_19: 1383254551
+      Todos os tilesets de pedra_2: 9014965181325514909
+      Todos os tilesets de pedra_20: 464291882
+      Todos os tilesets de pedra_21: -836621206
+      Todos os tilesets de pedra_22: 1420285574
+      Todos os tilesets de pedra_23: -1221750355
+      Todos os tilesets de pedra_24: 546575803
+      Todos os tilesets de pedra_25: -1538981421
+      Todos os tilesets de pedra_26: -271549028
+      Todos os tilesets de pedra_27: 1152562211
+      Todos os tilesets de pedra_28: 1368904088
+      Todos os tilesets de pedra_29: 596525935
+      Todos os tilesets de pedra_3: 1016678304618428834
+      Todos os tilesets de pedra_30: -1840756947
+      Todos os tilesets de pedra_31: 1539229390
+      Todos os tilesets de pedra_32: 952583467
+      Todos os tilesets de pedra_4: -8482728905369483216
+      Todos os tilesets de pedra_5: -5650944902600654119
+      Todos os tilesets de pedra_6: -1970712096
+      Todos os tilesets de pedra_7: -2109989610
+      Todos os tilesets de pedra_8: 1129741930
+      Todos os tilesets de pedra_9: -1772608578
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

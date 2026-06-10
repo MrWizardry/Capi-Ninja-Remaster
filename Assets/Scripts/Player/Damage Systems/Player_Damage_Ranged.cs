@@ -11,7 +11,8 @@ public class Player_Damage_Ranged : MonoBehaviour
     public LayerMask enemy;
     public float maxRangeDistance = 5f;  
     private bool attacking;
-    public int damage = 20; 
+    public int damage = 1; 
+    public float hitStopForce = 0.1f;
 
     private Vector2 screenPosition;
     private Vector2 worldPosition;
@@ -61,7 +62,7 @@ public class Player_Damage_Ranged : MonoBehaviour
         {
             enemy.GetComponent<EnemyLife>().TakeDamage(damage);
             timeSinceLastAtk = timeBetweenAtk;
-            StartCoroutine(AttackEffect());
+            StartCoroutine(HitStop());
         }
     }
     private IEnumerator AttackEffect()
@@ -69,6 +70,14 @@ public class Player_Damage_Ranged : MonoBehaviour
         animManager.StartDash();
         yield return new WaitForSeconds(0.1f);
         animManager.EndDash();
+    }
+    
+    private IEnumerator HitStop()
+    {
+        float hitForce = 0.02f * damage;
+        Time.timeScale = hitStopForce;
+        yield return new WaitForSecondsRealtime(hitForce);
+        Time.timeScale = 1f;
     }
     private void OnDrawGizmosSelected()
     {
