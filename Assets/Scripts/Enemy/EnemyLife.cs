@@ -9,9 +9,12 @@ public class EnemyLife : MonoBehaviour
     private int currentHealth; // Vida atual do inimigo
 
     [SerializeField] private GameObject vfxDeath;
+
+    private Vector3 SpawnPosition;
     void Start()
     {
         currentHealth = maxHealth;
+        SpawnPosition = transform.position;
     }
 
     public void TakeDamage(int damage)
@@ -26,8 +29,23 @@ public class EnemyLife : MonoBehaviour
 
     void Die()
     {
-        Instantiate(vfxDeath, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-        Debug.Log("Inimigo Morreu");
+        //Instantiate(vfxDeath, transform.position, Quaternion.identity);
+        //Destroy(this.gameObject);
+        //Debug.Log("Inimigo Morreu");
+
+        if(vfxDeath != null)
+        {
+            Instantiate(vfxDeath, transform.position, Quaternion.identity);
+        }
+
+        Respawn();
     }
+
+    void Respawn()
+    {
+        currentHealth = maxHealth; // Restaura a vida do inimigo
+        transform.position = SpawnPosition; 
+        Debug.Log("Inimigo Respawnou");
+    }
+
 }

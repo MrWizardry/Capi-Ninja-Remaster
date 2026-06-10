@@ -8199,6 +8199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3874722316640283971, guid: bbb1e92c99bcebf4f8d4bea9a63ce7fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4792082749935885112, guid: bbb1e92c99bcebf4f8d4bea9a63ce7fa, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -8218,6 +8222,10 @@ PrefabInstance:
     - target: {fileID: 7123021837628353042, guid: bbb1e92c99bcebf4f8d4bea9a63ce7fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: StartFadeOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075941791857675213, guid: bbb1e92c99bcebf4f8d4bea9a63ce7fa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8842201327258113842, guid: bbb1e92c99bcebf4f8d4bea9a63ce7fa, type: 3}
       propertyPath: m_Pivot.x
